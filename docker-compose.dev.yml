@@ -8,7 +8,7 @@ services:
         build:
           context: ./frontend
         ports:
-          - "89:89"
+          - "88:89"
         command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     admin_backend:
         image: docker/dasbord_backend

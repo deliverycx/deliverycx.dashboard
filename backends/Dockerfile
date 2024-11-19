@@ -1,4 +1,4 @@
-FROM node:20 AS development
+FROM node:20.12.2 AS development
 
 WORKDIR /usr/node/app
 
@@ -11,7 +11,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:20 as production
+FROM node:20.12.2 as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}

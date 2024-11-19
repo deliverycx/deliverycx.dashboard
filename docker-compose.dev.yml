@@ -18,7 +18,7 @@ services:
         volumes:
           - ./static:/usr/node/app/public
         build:
-            context: ./backend
+            context: ./backends
         networks:
           - mynetwork
 networks:

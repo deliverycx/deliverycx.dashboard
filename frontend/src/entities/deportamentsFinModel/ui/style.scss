@@ -1,0 +1,79 @@
+.deportament_info {
+	font-size: 18px;
+	width: 100%;
+	margin-top: 25px;
+
+	.deportament_info-item {
+		display: flex;
+		align-items: center;
+		margin: 5px 0;
+	}
+
+	.deportament_info-item_title {
+		font-size: 300;
+		margin-right: 20px;
+		width: 30%;
+	}
+
+	.deportament_info-item_value {
+		font-size: 600;
+	}
+
+	th {
+		font-family: var(--font-family);
+		font-weight: 600;
+		font-size: 14px;
+		text-align: center;
+		color: var(--black-to-white-white-20-second-button-active);
+	}
+
+
+
+	.deportament_info-celltitle {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		width: 200px;
+		height: 100%;
+
+
+		span {
+			font-family: var(--font-family);
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 114%;
+			color: var(--black-to-white-white-20-second-button-active);
+		}
+
+		.unload_box {
+			width: 100%;
+		}
+	}
+
+	.deportament_info-cell {
+		padding: 10px;
+	}
+}
+
+.table_model-cell {
+	min-width: 100px;
+}
+
+.picker_box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #f0f0f03d;
+	padding: 20px;
+	border: 10px;
+
+	.picker_box_info {
+		margin-right: 10px;
+	}
+
+	.picker_box_info-title {
+		font-size: 18px;
+		font-weight: 600;
+		color: #111;
+	}
+}

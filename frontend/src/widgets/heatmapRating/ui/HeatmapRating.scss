@@ -1,0 +1,24 @@
+.heatmap {
+	margin-top: 30px;
+
+	.t1_title {
+		margin-bottom: 15px;
+	}
+}
+
+.general_rating {
+	margin-top: 30px;
+	background-color: #fff;
+	padding: 25px;
+	border-radius: 32px;
+	box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+
+	.general_rating_title {
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 112%;
+		color: var(--black-to-white-black);
+		margin-bottom: 15px;
+	}
+}

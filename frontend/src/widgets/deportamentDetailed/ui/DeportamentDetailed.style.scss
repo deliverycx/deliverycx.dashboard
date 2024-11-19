@@ -1,0 +1,28 @@
+.detailed {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 32px;
+
+	.detailed_box {
+		display: flex;
+	}
+
+	.detailed_box_title {
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 112%;
+		color: var(--black-to-white-black);
+	}
+
+	.detailed_box_left {
+		width: 100%;
+	}
+
+	.detailed_box_right {
+		width: 180px;
+		display: flex;
+		flex-direction: column;
+
+	}
+}

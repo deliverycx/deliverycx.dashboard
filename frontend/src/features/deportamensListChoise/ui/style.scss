@@ -1,0 +1,18 @@
+.deportamen_choise {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	align-items: center;
+	margin: 30px 0;
+	background-color: #fff;
+	border-radius: 30px;
+
+	.deportamen_choise_list {
+		margin-right: 20px;
+	}
+}
+
+.deportamen_choise-multi {
+	width: 100% !important;
+	min-width: 350px !important;
+}

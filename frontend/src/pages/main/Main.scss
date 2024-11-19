@@ -1,0 +1,10 @@
+.container_box {
+	display: flex;
+	flex-wrap: nowrap;
+	margin-top: 32px;
+
+	.right_container {
+		width: 66%;
+		margin-left: 1%;
+	}
+}

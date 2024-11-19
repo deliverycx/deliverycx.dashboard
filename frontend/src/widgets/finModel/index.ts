@@ -1,0 +1,1 @@
+import { HOCDetailedfinModel } from "./ui/HOC.DetailedfinModel.ui"

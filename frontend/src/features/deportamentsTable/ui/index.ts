@@ -1,0 +1,1 @@
+export { DeportamentsTableColorGradient } from "./DeportamentsTableColorGradient"

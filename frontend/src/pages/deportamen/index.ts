@@ -1,0 +1,1 @@
+export { DeportamentPage } from "./ui/DeportamenPage.ui"

@@ -1,0 +1,33 @@
+.widgets_colum_color {
+	width: 100%;
+	max-width: 200px;
+	border-radius: 32px;
+	height: 112px;
+	padding: 32px;
+	box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.widgets_colum-number {
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 100%;
+}
+
+.widgets_colum_status {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	svg {
+		margin-right: 5px;
+	}
+
+	.status--number {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 133%;
+	}
+}

@@ -1,0 +1,18 @@
+.menu {
+	padding: 0 32px;
+	width: 300px;
+	height: 100%;
+
+	.menu_list {
+		margin-top: 30px;
+
+		a {
+			margin-bottom: 5px;
+
+			&:hover {
+				background-color: #fff;
+			}
+		}
+	}
+
+}

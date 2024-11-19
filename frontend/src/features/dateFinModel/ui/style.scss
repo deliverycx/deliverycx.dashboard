@@ -1,0 +1,24 @@
+.rage_box {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+
+	.rage_box-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.titl {
+			display: block;
+			font-size: 21px;
+			font-weight: 600;
+			padding: 0 15px;
+		}
+	}
+}
+
+.rage_date_section {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #3232;
+}

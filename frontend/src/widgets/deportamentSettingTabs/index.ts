@@ -1,0 +1,1 @@
+export { DeportamentSettingTabs } from "./ui/DeportamentSettingTabs"

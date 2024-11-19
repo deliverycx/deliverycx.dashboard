@@ -1,0 +1,42 @@
+.setting_tabs {
+	width: 100%;
+	height: 100%;
+
+	.setting_tabs_menu {
+		width: 22%;
+		float: right;
+		margin-left: 15px;
+		margin-top: 20px;
+		position: sticky;
+		top: 15px;
+
+
+		.MuiTabs-indicator {
+			left: 0;
+		}
+
+		.MuiButtonBase-root {
+			font-size: 12px;
+			padding: 0;
+			padding-left: 10px;
+		}
+	}
+
+	.setting_tabs_item {
+		float: left;
+		background-color: #fff;
+		width: 76%;
+		border-radius: 32px;
+	}
+}
+
+.deportamet_title {
+	font-size: 26px;
+	font-weight: 600;
+	margin-left: 15px;
+	margin-bottom: 25px;
+}
+
+.setting_tabs-clf {
+	clear: both;
+}

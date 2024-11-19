@@ -1,0 +1,44 @@
+.pointlist_head {
+	margin-top: 20px;
+	margin-bottom: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.pointlist_title {
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 112%;
+		color: var(--black-to-white-black);
+	}
+}
+
+.pointlist_serch {
+	position: relative;
+	width: 320px;
+	height: 44px;
+	line-height: 40px;
+	padding-left: 15px;
+	background: var(--black-to-white-white-95);
+	box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.12);
+	border-radius: 32px;
+
+	.pointlist_serch-text {
+		background: none;
+		font-family: var(--font-family);
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 150%;
+		color: var(--black-to-white-white-60);
+		border: none;
+	}
+
+	.pointlist_serch-btn {
+		position: absolute;
+		right: 10px;
+		top: 12px;
+		border: none;
+		background: none;
+	}
+}

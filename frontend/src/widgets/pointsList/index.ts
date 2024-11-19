@@ -1,0 +1,1 @@
+import { PointsListWidget } from "./ui/PointsList"

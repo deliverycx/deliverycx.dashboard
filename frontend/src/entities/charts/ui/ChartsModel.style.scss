@@ -1,0 +1,21 @@
+.chart_box {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 32px;
+	width: 100%;
+
+	.chart_box_title {
+		display: flex;
+		justify-content: space-between;
+		padding: 0 25px;
+	}
+
+	.chart_box_title-lable {
+		font-size: 18px;
+		font-weight: 700;
+	}
+
+	.chart_box_title-metric {
+		font-size: 18px;
+	}
+}

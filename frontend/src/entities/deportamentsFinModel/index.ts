@@ -1,0 +1,1 @@
+export { DeportamentsFinModelForm } from "./ui/DeportamentsFinModelForm"

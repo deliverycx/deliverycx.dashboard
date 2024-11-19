@@ -1,0 +1,1 @@
+import { DeportamentDetailed } from "./ui/DeportamentDetailed"

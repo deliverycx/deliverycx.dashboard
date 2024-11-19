@@ -1,0 +1,1 @@
+export { UnloadIIkkoDeportametn } from "./ui/UnloadIIkkoDeportametn"

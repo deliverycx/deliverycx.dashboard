@@ -1,0 +1,19 @@
+@import 'vars';
+@import 'fonts';
+@import 'reset';
+
+@import './components/titles';
+@import './components/forms';
+
+
+body {
+	background: var(--black-to-white-white-90-white-50-disabled);
+	font-family: "Tilda Sans", sans-serif;
+	font-weight: normal;
+}
+
+.container {
+	max-width: 1440px;
+	height: 100%;
+	margin: 0 auto;
+}

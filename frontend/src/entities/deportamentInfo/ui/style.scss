@@ -1,0 +1,72 @@
+.deportament_info {
+	font-size: 18px;
+	width: 100%;
+	margin-bottom: 25px;
+
+	h2 {
+		margin: 15px 0;
+		font-size: 21px;
+		font-weight: 600;
+	}
+
+	.deportament_info-item {
+		display: flex;
+		align-items: center;
+		margin: 8px 0;
+	}
+
+	.deportament_info-item_title {
+		font-family: var(--font-family);
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 111%;
+		color: var(--black-to-white-black);
+		width: 45%;
+	}
+
+	.deportament_info-item_value {
+		font-family: var(--font-family);
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 111%;
+		color: var(--black-to-white-black);
+		width: 55%;
+	}
+}
+
+.deportametinfo_param {
+	background: #cee1af;
+	border-radius: 17px;
+	padding: 20px;
+	width: 140px;
+	height: 140px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 5px 0;
+
+	.deportametinfo_param-numb {
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 48px;
+		line-height: 100%;
+		color: #4d7819;
+	}
+
+	.deportametinfo_param-title {
+		font-family: var(--font-family);
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 111%;
+		text-align: center;
+		color: var(--black-to-white-black);
+	}
+}
+
+.deportament_info_line {
+	margin: 20px 0;
+	height: 1px;
+	width: 100%;
+	background-color: #ececec;
+}

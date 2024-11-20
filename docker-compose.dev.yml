@@ -1,30 +1,28 @@
 version: "3.9"
 
 services:
-    
-    admin_frontend:
-        image: docker/dasbord_frontend
-        container_name: dasbord_frontend
-        build:
-          context: ./frontend
-        ports:
-          - "89:89"
-        command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-        networks:
-          - mynetwork
-    admin_backend:
-        image: docker/dasbord_backend
-        container_name: dasbord_backend
-        env_file:
-            - ./backends/.production.env
-        volumes:
-          - ./static:/usr/node/app/public
-        build:
-            context: ./backends
-        networks:
-          - mynetwork
+  admin_frontend:
+    image: docker/dasbord_frontend
+    container_name: dasbord_frontend
+    build:
+      context: ./frontend
+    ports:
+      - "88:88"
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    networks:
+      - mynetwork
+  admin_backend:
+    image: docker/dasbord_backend
+    container_name: dasbord_backend
+    env_file:
+      - ./backends/.production.env
+    volumes:
+      - ./static:/usr/node/app/public
+    build:
+      context: ./backends
+    networks:
+      - mynetwork
 networks:
   mynetwork:
     external:
-      name: delivglobalnetwork           
-            
+      name: delivglobalnetwork

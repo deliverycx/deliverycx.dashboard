@@ -9,7 +9,7 @@ export const useCaseRequestUnloadParams = (deportament: IgroopsDep) => {
 	const getUnloadParamIIkko = async () => {
 		try {
 			const { data } = await unloadIIKKOApiRequest.getUnloadParams(deportament.departamentid)
-			console.log(data);
+
 			data && setActiveDeportament(data)
 			return data
 		} catch (error) {

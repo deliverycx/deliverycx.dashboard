@@ -1,0 +1,25 @@
+.date_mouth {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+	align-items: center;
+	margin: 30px 0;
+	background-color: #fff;
+	border-radius: 30px;
+
+	.date_mouth-item {
+		border-radius: 32px;
+		border: 1px solid #dfdfdf;
+		padding: 10px 20px;
+		text-align: center;
+		margin: 5px;
+		cursor: pointer;
+	}
+
+	.date_mouth-item.active {
+		background-color: #dfdfdf;
+		border: none;
+
+	}
+}

@@ -5,7 +5,7 @@ import "./style.scss"
 export const FinModelIndicatorTrend: FC<{ finKey: string }> = ({ finKey }) => {
 	const useCase = useContext(FinModelContext)
 	const { finModelIndicatorFormatter } = useCase
-
+	//console.log(finModelIndicatorFormatter);
 	const arrowTrend = finModelIndicatorFormatter.trendIndicator(finKey)
 
 	return (

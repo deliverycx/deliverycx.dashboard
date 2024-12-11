@@ -47,6 +47,8 @@ export const FinModelTable = () => {
 						</FinModelPrevPeriod>
 					</Perfomans_Item>
 
+
+
 				</div>
 
 			)
@@ -64,8 +66,11 @@ export const FinModelTable = () => {
 				<div className="header">Факт</div>
 				<div className="header">% отклонения от среднего</div>
 
+
+
 				<div className="rows">
 					{
+						finModelIndicatorFormatter &&
 						TableFild()
 					}
 				</div>

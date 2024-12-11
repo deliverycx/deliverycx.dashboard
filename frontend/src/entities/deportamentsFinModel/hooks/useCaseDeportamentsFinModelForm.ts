@@ -118,15 +118,24 @@ export const useCaseDeportamentsFinModelFormTable = (formlMetods: any, deportame
 			const factrub = field === 'factrub' ? parseFloat(value) : categoryValues.factrub;
 			const costs = field === 'costs' ? parseFloat(value) : categoryValues.costs;
 
-			// Обновляем связанные поля fact и deviation для соответствующей категории
-			const fact = factrub; // Ваша логика для fact
-			const deviation = costs; // Ваша логика для deviation
-
-
-			formik.setFieldValue(`${category}.fact`, formlMetods.fact(category, fact));
-			formik.setFieldValue(`${category}.deviation`, formlMetods.deviation(category, deviation));
+			if (formik.values.averageRevenue.factrub) {
+				if (field === 'costs') {
+					const fact = formlMetods.costByfact(category, formik.values.averageRevenue.factrub, costs)
+					formik.setFieldValue(`${category}.factrub`, fact);
+					formik.setFieldValue(`${category}.fact`, formlMetods.fact(category, fact));
+					formik.setFieldValue(`${category}.deviation`, formlMetods.deviation(category, costs))
+				}
+				if (field === 'factrub') {
+					const deviation = formlMetods.factBycost(category, formik.values.averageRevenue.factrub, factrub)
+					formik.setFieldValue(`${category}.costs`, deviation);
+					formik.setFieldValue(`${category}.fact`, formlMetods.fact(category, factrub));
+					formik.setFieldValue(`${category}.deviation`, formlMetods.deviation(category, deviation))
+				}
+			}
 
 		}
+
+
 	}
 
 	const getFinModel = async () => {
@@ -141,6 +150,7 @@ export const useCaseDeportamentsFinModelFormTable = (formlMetods: any, deportame
 	}
 
 	useEffect(() => {
+		formik.resetForm()
 		getFinModel()
 	}, [deportament])
 
@@ -157,6 +167,8 @@ export const useCaseDeportamentsFinModelFormTable = (formlMetods: any, deportame
 					formik.setFieldValue(`${category}.factrub`, model[category].factrub);
 					formik.setFieldValue(`${category}.deviation`, model[category].deviation);
 				}
+			} else {
+				formik.resetForm()
 			}
 		}
 

@@ -8,7 +8,7 @@ import { HOCDetailedfinModel } from "widgets/finModel/ui/HOC.DetailedfinModel.ui
 
 export const DeportamentDetailed: FC<{ deportamentid: string }> = ({ deportamentid }) => {
 	const deportametnDetailed = useDeportamentDetaildedHooks(deportamentid)
-	console.log(deportametnDetailed?.setting);
+
 	return (
 		<>
 			{

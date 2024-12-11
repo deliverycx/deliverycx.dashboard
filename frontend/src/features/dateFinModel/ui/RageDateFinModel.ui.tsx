@@ -10,63 +10,37 @@ import dayjs from 'dayjs';
 import "./style.scss"
 
 
-export const RageDateFinModel: FC<{ rage: boolean, set: any }> = ({ rage, set }) => {
+export const RageDateFinModel: FC<{ set: any }> = ({ set }) => {
 	const [mounthDateCurrent, setMounthDateCurrent] = useState<any>(dayjs())
-	const [mounthDatePrevious, setMounthDatePrevious] = useState<any>(dayjs().subtract(1, 'month'))
 
 
 	useEffect(() => {
 		set({
 			mounthDateCurrent: mounthDateCurrent.format('YYYY-MM'),
-			mounthDatePrevious: mounthDatePrevious.format('YYYY-MM')
+			mounthDatePrevious: dayjs(mounthDateCurrent).subtract(1, 'month').format('YYYY-MM')
 		})
-	}, [mounthDateCurrent, mounthDatePrevious])
+	}, [mounthDateCurrent])
+
+
 
 	return (
 		<div className="rage_date_section">
 			<h3>Выберите период</h3>
-			{
-				rage &&
-				<div className="rage_box">
+			<div className="rage_box">
 
-					<div className="rage_box-item">
-						<span className="titl">с</span>
+				<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ru as unknown}
+					localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
+					<DatePicker
+						views={['month']}
 
+						label="Выберите дату"
 
+						defaultValue={mounthDateCurrent}
+						onChange={setMounthDateCurrent}
+					/>
+				</LocalizationProvider>
 
-						<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ru as unknown}
-							localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
-							<DatePicker
-								views={['month']}
-
-								label="Выберите дату"
-
-								defaultValue={mounthDateCurrent}
-								onChange={setMounthDateCurrent}
-							/>
-						</LocalizationProvider>
-
-					</div>
-					<div className="rage_box-item">
-						<span className="titl">по</span>
-
-
-
-						<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ru as unknown}
-							localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
-							<DatePicker
-								views={['month']}
-
-								label="Выберите дату"
-
-								defaultValue={mounthDatePrevious}
-								onChange={setMounthDatePrevious}
-							/>
-						</LocalizationProvider>
-
-					</div>
-				</div>
-			}
+			</div>
 
 		</div>
 	)

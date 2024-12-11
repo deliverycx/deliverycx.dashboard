@@ -20,7 +20,8 @@ export class FomulsClassFinModel {
 	}
 	static deviationModel(cats: string, deviation: number) {
 		const oldValue = FomulsClassFinModel.finModelData[cats].plan
-		return oldValue - deviation
+		const result = oldValue - deviation
+		return result.toFixed(1)
 	}
 
 	static ikkoFactMode(cats: string, fact: number) {
@@ -29,6 +30,24 @@ export class FomulsClassFinModel {
 		return difference
 	}
 
+
+	static averageCostbyFact(cats: string, { avarage, cost }: { avarage: number, cost: number }) {
+		const result = (avarage * cost) / 100
+		return Math.trunc(result)
+	}
+	static averageFactbyCost(cats: string, { avarage, fact }: { avarage: number, fact: number }) {
+		const result = (fact / avarage) * 100
+		return result.toFixed(1)
+	}
+
+	static trendFormul(arow: "up" | "down") {
+		// если up  то хорошо если down то плохо
+		return (value: number) => {
+			return arow === "down"
+				? value < 0 ? "up" : "down"
+				: value > 0 ? "down" : "up"
+		}
+	}
 
 }
 

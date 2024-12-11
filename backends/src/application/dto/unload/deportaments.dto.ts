@@ -30,6 +30,6 @@ export class SredniychekDto {
 
 export class RequestDTOUnloadParams {
 	deportamentid: string
-	paramKeys: "averageCheck" | "monthlyCheckCount" | "averageDailyRevenue"
+	paramKeys: "averageCheck" | "monthlyCheckCount" | "averageDailyRevenue" | "averageRevenue"
 	mounth: string
 }

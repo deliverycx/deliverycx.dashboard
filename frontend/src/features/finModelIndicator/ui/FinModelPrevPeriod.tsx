@@ -14,7 +14,9 @@ export const FinModelPrevPeriod: FC<IProps> = ({ keyFin, metod, children }) => {
 	const [notiv, setNotiv] = useState(false);
 
 
-	const valueModel = finModelIndicatorFormatter.rageFinModel.modelPrevious.model[keyFin][metod] || null
+	const valueModel = finModelIndicatorFormatter.rageFinModel
+		&& finModelIndicatorFormatter.rageFinModel.modelPrevious
+		&& finModelIndicatorFormatter.rageFinModel.modelPrevious.model[keyFin][metod] || null
 
 	return (
 		<div className="prevperiod_box" onMouseEnter={() => setNotiv(true)} onMouseLeave={() => setNotiv(false)}>

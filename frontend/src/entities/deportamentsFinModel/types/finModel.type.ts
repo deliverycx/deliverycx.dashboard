@@ -1,7 +1,7 @@
 import { finModelEntity } from "../entity/finModelDomain";
 
 export type IkeyFinModelEntity = keyof typeof finModelEntity
-export type IkeyFnFormulModelEntity = "deviationmodelData" | "factmodelData"
+export type IkeyFnFormulModelEntity = "deviationmodelData" | "factmodelData" | "averageCostbyFact" | "averageFactbyCost"
 
 export type IfinModelMouth = {
 	mouth: string,

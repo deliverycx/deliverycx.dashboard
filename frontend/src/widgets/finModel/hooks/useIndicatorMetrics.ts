@@ -15,8 +15,8 @@ export const useIndicatorMetrics = (metrics: { rageFinModel: { modelCurrent: Ifi
 	const findSum = (rage: any): (currentValue: string, prevSum: any) => { currentMetric: any, previosMetric: any } => {
 		return (currentValue: string, prevSum: any) => {
 			if (rage && currentValue && prevSum) {
-				const current = rage.modelCurrent.metric
-				const prev = rage.modelPrevious.metric
+				const current = rage.modelCurrent && rage.modelCurrent.metric
+				const prev = rage.modelPrevious && rage.modelPrevious.metric
 				return current && prev && {
 					currentMetric: {
 						sum: helpSum(current[currentValue], prevSum),

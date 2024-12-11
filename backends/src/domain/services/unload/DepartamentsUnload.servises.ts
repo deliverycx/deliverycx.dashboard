@@ -68,6 +68,7 @@ export class DepartamentsUnloadServises extends UnloadServises {
 
 	async vyruchkaMounthFromIIKKO(mounth: string) {
 		const [year, mount] = this.dateSplitMounth(mounth)
+
 		return await this.dataMouthFromIIKKO((start, end) => this.iikkoRequest.vyruchkaMounth(start, end), { year: year, mouth: mount })
 	}
 }

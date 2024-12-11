@@ -29,6 +29,7 @@ export class UnloadCommands {
 	}
 
 	async saveVyruchkaMounth(mounth: string) {
+		console.log('end unload saveSredniychek');
 		const result = await this.departamentsUnloadServises.vyruchkaMounthFromIIKKO(mounth)
 		await this.deportamentsRepositories.vyruchkaMounthCreate(VyruchkaMounthMapper(result))
 		console.log('end unload saveSredniychek');

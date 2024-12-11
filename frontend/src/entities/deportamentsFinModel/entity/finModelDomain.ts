@@ -25,12 +25,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.costPrice,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -43,12 +45,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.payrollFund,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -61,12 +65,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.rent,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: null
 		},
 		params: {
 			factrub: 0,
@@ -79,12 +85,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.utilities,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -97,12 +105,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.consumablesAndDisposableDishes,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -115,12 +125,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.equipmentMaintenance,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -133,12 +145,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.marketing,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -151,12 +165,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.generalProductionExpenses,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -169,12 +185,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.taxes,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -187,12 +205,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.royalties,
 		rashod: true,
 		iikko: false,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
-			deviationmodelData: FomulsClassFinModel.deviationModel as any
+			deviationmodelData: FomulsClassFinModel.deviationModel as any,
+			averageCostbyFact: FomulsClassFinModel.averageCostbyFact as any,
+			averageFactbyCost: FomulsClassFinModel.averageFactbyCost as any
 		},
 		params: {
 			factrub: 0,
@@ -205,12 +225,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.averageCheck,
 		rashod: false,
 		iikko: true,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
 		lable: "руб",
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
-			deviationmodelData: null
+			deviationmodelData: null,
+			averageCostbyFact: null,
+			averageFactbyCost: null
 		},
 		params: {
 			factrub: 0,
@@ -223,11 +245,13 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.monthlyCheckCount,
 		rashod: false,
 		iikko: true,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
-			deviationmodelData: null
+			deviationmodelData: null,
+			averageCostbyFact: null,
+			averageFactbyCost: null
 		},
 		lable: "руб",
 		params: {
@@ -241,12 +265,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.dailyCheckCount,
 		rashod: false,
 		iikko: true,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
 		lable: "руб",
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
-			deviationmodelData: null
+			deviationmodelData: null,
+			averageCostbyFact: null,
+			averageFactbyCost: null
 		},
 		params: {
 			factrub: 0,
@@ -259,12 +285,14 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.averageDailyRevenue,
 		rashod: false,
 		iikko: true,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
 		lable: "руб",
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
-			deviationmodelData: null
+			deviationmodelData: null,
+			averageCostbyFact: null,
+			averageFactbyCost: null
 		},
 		params: {
 			factrub: 0,
@@ -277,7 +305,7 @@ export const finModelEntity = {
 		name: inputFromNameFinModel.averageRevenue,
 		rashod: false,
 		iikko: true,
-		mark: "up",
+		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
 		lable: "руб",
 		formul: null,

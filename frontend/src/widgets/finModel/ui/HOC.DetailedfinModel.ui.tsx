@@ -17,7 +17,7 @@ type IProps = {
 
 export const FinModelContext = React.createContext<any>({});
 export const HOCDetailedfinModel: FC<IProps> = ({ widgetMouth, deportament }) => {
-	const useCase = useCaseFinModel(deportament.departamentid)
+	const useCase = useCaseFinModel(deportament)
 	const { setRageMouth } = useCase
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ export const HOCDetailedfinModel: FC<IProps> = ({ widgetMouth, deportament }) =>
 			{
 				widgetMouth &&
 				<FinModelContext.Provider value={useCase}>
-					<RageDateFinModel rage={widgetMouth} set={setRageMouth} />
+					<RageDateFinModel set={setRageMouth} />
 					<FinModelTable />
 					<FinModelMetrics deportament={deportament} />
 				</FinModelContext.Provider>
@@ -42,6 +42,7 @@ export const HOCDetailedfinModel: FC<IProps> = ({ widgetMouth, deportament }) =>
 			{
 				!widgetMouth &&
 				<FinModelContext.Provider value={useCase}>
+					<RageDateFinModel set={setRageMouth} />
 					<FinModelMetrics deportament={deportament} />
 					<FinModelTableWidget deportament={deportament} />
 

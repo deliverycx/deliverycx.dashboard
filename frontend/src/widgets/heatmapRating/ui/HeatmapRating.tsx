@@ -8,12 +8,13 @@ import { usePointsListRequest } from "entities/pointListEntity";
 import { useContext } from "react";
 import React from "react";
 import { DeportamentsTableColorGeneral } from "features/deportamentsTable/ui/DeportamentsTableColorGeneral";
+import { DateMouth, HeatMapRatingDatesTable } from "features/heatMapRatingDates";
 
 export const DeportametListContext = React.createContext<any>({
 	deportaments: []
 })
 export const HeatmapRating = () => {
-	const mapRating = useRequestGeneralRatingFinModel()
+	const { handlerCurrentDate, mapRating } = useRequestGeneralRatingFinModel()
 	const { pointList } = usePointsListRequest()
 	const useCase = useCaseColorRating(mapRating)
 	const { handlerChoiseRating } = useCase
@@ -21,6 +22,7 @@ export const HeatmapRating = () => {
 
 	return (
 		<>
+			<HeatMapRatingDatesTable set={handlerCurrentDate} />
 
 			{
 				mapRating && pointList &&

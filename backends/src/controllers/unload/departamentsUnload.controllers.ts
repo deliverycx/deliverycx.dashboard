@@ -38,6 +38,10 @@ export class DepartamentsUnloadControllers {
 				await this.unloadCommands.saveVyruchkaMounth(body.mounth)
 				return { status: true }
 			}
+			case "averageRevenue": {
+				await this.unloadCommands.saveVyruchkaMounth(body.mounth)
+				return { status: true }
+			}
 		}
 	}
 }

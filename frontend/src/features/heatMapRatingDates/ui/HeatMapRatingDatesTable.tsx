@@ -1,6 +1,8 @@
 import { Box, Tab, Tabs } from "@mui/material";
+import { QuartalDatePicker, YearDatePicker } from "features/dateFinModel";
 import { SettingDatePicker } from "features/dateFinModel/ui/SettingDatePicker";
 import { FC, useState } from "react";
+import "./HeatMapRatingTypeModel.style.scss"
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -50,7 +52,13 @@ export const HeatMapRatingDatesTable: FC<{ set: any }> = ({ set }) => {
 				<CustomTabPanel value={value} index={0}>
 					<SettingDatePicker setDate={set} />
 				</CustomTabPanel>
-				<CustomTabPanel value={value} index={1}></CustomTabPanel>
+				<CustomTabPanel value={value} index={1}>
+					<QuartalDatePicker setDate={set} />
+				</CustomTabPanel>
+				<CustomTabPanel value={value} index={2}>
+					<YearDatePicker setDate={set} />
+				</CustomTabPanel>
+
 			</div>
 		</div>
 	)

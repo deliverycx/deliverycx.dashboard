@@ -9,7 +9,7 @@ type IProps = {
 		sum: number
 		colrs: "green" | "red"
 	} | null
-	previos: {
+	previos?: {
 		trend: "up" | "down"
 		sum: number
 		colrs: "green" | "red"
@@ -19,6 +19,7 @@ type IProps = {
 
 export const MetricsTrend: FC<IProps> = ({ current, previos }) => {
 	const [notiv, setNotiv] = useState(false);
+
 
 	return (
 		<>

@@ -9,20 +9,31 @@ import { useContext } from "react";
 import React from "react";
 import { DeportamentsTableColorGeneral } from "features/deportamentsTable/ui/DeportamentsTableColorGeneral";
 import { DateMouth, HeatMapRatingDatesTable } from "features/heatMapRatingDates";
+import { HeatMapRatingTypeModel } from "features/heatMapRatingDates/ui/HeatMapRatingTypeModel";
+import { Button } from "@mui/material";
 
 export const DeportametListContext = React.createContext<any>({
 	deportaments: []
 })
 export const HeatmapRating = () => {
-	const { handlerCurrentDate, mapRating } = useRequestGeneralRatingFinModel()
+	const { handlerCurrentDate, mapRating, setTypeModel, setCurrentDate } = useRequestGeneralRatingFinModel()
 	const { pointList } = usePointsListRequest()
 	const useCase = useCaseColorRating(mapRating)
 	const { handlerChoiseRating } = useCase
 
-
 	return (
 		<>
-			<HeatMapRatingDatesTable set={handlerCurrentDate} />
+			<div className="heatmap_seting">
+				<div className="heatmap_seting_box">
+					<HeatMapRatingDatesTable set={setCurrentDate} />
+					<HeatMapRatingTypeModel set={setTypeModel} />
+
+				</div>
+				<Button variant="contained" size="medium" onClick={handlerCurrentDate} >	Показать</Button>
+
+			</div>
+
+
 
 			{
 				mapRating && pointList &&

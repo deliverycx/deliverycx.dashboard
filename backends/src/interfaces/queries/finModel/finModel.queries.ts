@@ -14,8 +14,15 @@ export class FinModelQueries {
 		return this.finModelRepositories.getFinModel(deportamentid)
 	}
 
-	async queryGeneryData(date: { currenMouth: string, prevMouth: string }) {
-		const result = await this.finModelRepositories.rageFinModel()
-		return result && result.length !== 0 && this.finModelSerivses.deportamentsGroopsBYDates(result, date)
+	async queryGeneryData(date: { currenMouth: string, prevMouth: string }, typemodel: string) {
+		const result = await this.finModelRepositories.rageFinModel([date.currenMouth, date.prevMouth])
+		const filter = this.finModelSerivses.filterGroopByTypeModel(result, typemodel)
+		return filter && filter.length !== 0 && this.finModelSerivses.deportamentsGroopsBYDates(filter, date)
+	}
+
+	async queryRatingMouth(arrMouth: string[], typemodel: string) {
+		const result = await this.finModelRepositories.rageFinModel(arrMouth)
+		const filter = this.finModelSerivses.filterGroopByTypeModel(result, typemodel)
+		return filter && filter.length !== 0 && this.finModelSerivses.deportamentsGroopsSrednieValue(filter)
 	}
 }

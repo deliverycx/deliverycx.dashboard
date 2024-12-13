@@ -75,7 +75,8 @@ export const useDeportamentInfoSettingForm = (deportament: IgroopsDep) => {
 		initialValues: {
 			yandex: '',
 			quality: '',
-			okupation: false
+			okupation: false,
+			typemodel: ''
 		},
 		onSubmit: (values) => {
 			requestSubmitDepInfo(values)
@@ -90,12 +91,15 @@ export const useDeportamentInfoSettingForm = (deportament: IgroopsDep) => {
 		}
 	}
 
+	console.log(formik);
+
 	useEffect(() => {
 
 		if (deportament.setting) {
 			formik.setFieldValue("yandex", deportament.setting.yandex)
 			formik.setFieldValue("quality", deportament.setting.quality)
 			formik.setFieldValue("okupation", deportament.setting.okupation)
+			formik.setFieldValue("typemodel", deportament.setting.menu)
 		}
 	}, [deportament])
 

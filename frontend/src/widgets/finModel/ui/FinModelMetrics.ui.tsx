@@ -10,8 +10,7 @@ import { IpointList } from "@shared/@types/points.type"
 export const FinModelMetrics: FC<{ deportament: IgroopsDep | IpointList }> = ({ deportament }) => {
 	const useCase = useContext(FinModelContext)
 	const { finModelIndicatorFormatter, currentMouthFinModelMetrics } = useCase
-	const useMetricInd = useIndicatorMetrics(finModelIndicatorFormatter, deportament.finmodel)
-
+	const useMetricInd = useIndicatorMetrics(currentMouthFinModelMetrics, deportament.finmodel)
 	return (
 		<>
 			{
@@ -23,7 +22,7 @@ export const FinModelMetrics: FC<{ deportament: IgroopsDep | IpointList }> = ({ 
 						{
 							useMetricInd.viruka &&
 							<div className="metrics_item-indicator">
-								<MetricsTrend current={useMetricInd.viruka.currentMetric} previos={useMetricInd.viruka.previosMetric} />
+								<MetricsTrend current={useMetricInd.viruka} />
 							</div>
 						}
 
@@ -34,7 +33,7 @@ export const FinModelMetrics: FC<{ deportament: IgroopsDep | IpointList }> = ({ 
 						{
 							useMetricInd.rashod &&
 							<div className="metrics_item-indicator">
-								<MetricsTrend current={useMetricInd.rashod.currentMetric} previos={useMetricInd.rashod.previosMetric} />
+								<MetricsTrend current={useMetricInd.rashod} />
 							</div>
 						}
 					</div>
@@ -44,7 +43,7 @@ export const FinModelMetrics: FC<{ deportament: IgroopsDep | IpointList }> = ({ 
 						{
 							useMetricInd.profit &&
 							<div className="metrics_item-indicator">
-								<MetricsTrend current={useMetricInd.profit.currentMetric} previos={useMetricInd.profit.previosMetric} />
+								<MetricsTrend current={useMetricInd.profit} />
 							</div>
 						}
 					</div>
@@ -54,7 +53,7 @@ export const FinModelMetrics: FC<{ deportament: IgroopsDep | IpointList }> = ({ 
 						{
 							useMetricInd.profitProcent &&
 							<div className="metrics_item-indicator">
-								<MetricsTrend current={useMetricInd.profitProcent.currentMetric} previos={useMetricInd.profitProcent.previosMetric} />
+								<MetricsTrend current={useMetricInd.profitProcent} />
 							</div>
 						}
 					</div>

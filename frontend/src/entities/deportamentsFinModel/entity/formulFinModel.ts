@@ -20,7 +20,9 @@ export class FomulsClassFinModel {
 	}
 	static deviationModel(cats: string, deviation: number) {
 		const oldValue = FomulsClassFinModel.finModelData[cats].plan
-		const result = oldValue - deviation
+
+		const result = Number(oldValue) - Number(deviation)
+
 		return result.toFixed(1)
 	}
 

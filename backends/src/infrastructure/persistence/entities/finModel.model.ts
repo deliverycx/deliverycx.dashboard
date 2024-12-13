@@ -9,4 +9,5 @@ export class FinModelModel {
 
 	@prop()
 	public paramsModel: any
+
 }

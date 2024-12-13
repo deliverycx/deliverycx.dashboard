@@ -4,7 +4,6 @@ import { useMemo } from 'react';
 
 
 export const useCaseCarts = (chart: { dates: string[], values: number[] }) => {
-	console.log(chart);
 
 	const splitMouth = chart.dates.map((val) => Number(val.split("-")[1]))
 

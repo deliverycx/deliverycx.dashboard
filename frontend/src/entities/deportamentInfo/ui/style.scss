@@ -31,6 +31,10 @@
 		line-height: 111%;
 		color: var(--black-to-white-black);
 		width: 55%;
+
+		.MuiFormControl-root {
+			width: 100%;
+		}
 	}
 }
 

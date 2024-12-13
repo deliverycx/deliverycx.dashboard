@@ -67,7 +67,7 @@ export class FinModelRepositories {
 	}
 })*/
 
-	async rageFinModel() {
+	async rageFinModel(mouthArr: string[]) {
 		return await this.finModelModel.aggregate([
 			// Шаг 1: Соединяем коллекции `departaments` и `finmodel` по `departamentid`
 			{
@@ -79,7 +79,7 @@ export class FinModelRepositories {
 				}
 			},
 			// Шаг 2: Разворачиваем массив `departamentData`
-			{ $unwind: "$departamentData" },
+			{ $unwind: { path: "$departamentData", preserveNullAndEmptyArrays: true } },
 			// Шаг 3: Фильтруем `paramsModel` по месяцам "2024-10" и "2024-09"
 			{
 				$addFields: {
@@ -87,27 +87,82 @@ export class FinModelRepositories {
 						$filter: {
 							input: "$paramsModel",
 							as: "param",
-							cond: { $in: ["$$param.mouth", ["2024-10", "2024-09"]] }
+							cond: { $in: ["$$param.mouth", mouthArr] } //[currenMouth, prevMouth]
 						}
 					}
 				}
 			},
 			// Шаг 4: Разворачиваем `filteredParams`
-			{ $unwind: "$filteredParams" },
+			{ $unwind: { path: "$filteredParams", preserveNullAndEmptyArrays: true } },
 			// Шаг 5: Добавляем новые поля с результатами вычислений
+
 			{
 				$addFields: {
 					profitDifferenceOpening: {
-						$subtract: [
-							{ $toDouble: "$departamentData.finmodel.profit.opening" },
-							"$filteredParams.metric.profitSum"
-						]
+						$cond: {
+							if: {
+								$and: [
+									{ $ne: ["$departamentData.finmodel.profit.opening", undefined] },
+									{ $ne: ["$filteredParams.metric.profitSum", undefined] }
+								]
+							},
+							then: {
+								$subtract: [
+									{
+										$convert: {
+											input: "$filteredParams.metric.profitSum",
+											to: "double",
+											onError: null,
+											onNull: null
+										}
+									},
+									{
+										$convert: {
+											input: "$departamentData.finmodel.profit.opening",
+											to: "double",
+											onError: null,
+											onNull: null
+										}
+									}
+
+								]
+							},
+							else: null
+						}
 					},
 					profitDifferencePlan: {
-						$subtract: [
-							{ $toDouble: "$filteredParams.metric.profitSumProcent" },
-							{ $toDouble: "$departamentData.finmodel.profit.plan" }
-						]
+						$cond: {
+							if: {
+								$and: [
+									{ $ne: ["$filteredParams.metric.profitSumProcent", undefined] },
+									{ $ne: ["$departamentData.finmodel.profit.plan", undefined] }
+								]
+							},
+							then: {
+								$subtract: [
+									{
+										$convert: {
+											input: "$filteredParams.metric.profitSumProcent",
+											to: "double",
+											onError: null,
+											onNull: null
+										}
+									},
+									{
+										$convert: {
+											input: "$departamentData.finmodel.profit.plan",
+											to: "double",
+											onError: null,
+											onNull: null
+										}
+									}
+								]
+							},
+							else: null
+						}
+					},
+					currentDeportamets: {
+						$ifNull: ["$departamentData.currentDeportamets", "default value"]
 					}
 				}
 			},
@@ -120,6 +175,7 @@ export class FinModelRepositories {
 					profitSum: "$filteredParams.metric.profitSum",
 					profitSumProcent: "$filteredParams.metric.profitSumProcent",
 					profit: "$departamentData.finmodel.profit",
+					typemodel: "$departamentData.setting.typemodel",
 					profitDifferenceOpening: 1,
 					profitDifferencePlan: 1
 				}

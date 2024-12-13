@@ -32,7 +32,7 @@ export class FinModelIndicatorFormatter {
 	//цвета
 	performanceIndicator(key: string) {
 		if (this.rageFinModel) {
-			console.log(this.rageFinModel.modelCurrent.model[key]);
+			//console.log(this.rageFinModel.modelCurrent.model[key]);
 			if (this.rageFinModel.modelCurrent.model[key].deviation === 0) return
 			return this.rageFinModel.modelCurrent.model[key].deviation < 0 ? "green" : "red"
 		}

@@ -1,5 +1,5 @@
 import { IgroopsDep } from "features/deportamensListChoise/types/groopsdeportemets.type"
-import { useCallback, useMemo } from "react"
+import { useCallback, useEffect, useMemo } from "react"
 import { FomulsClassFinModel } from "../entity/formulFinModel";
 import { finModelEntity } from "../entity/finModelDomain";
 import { IkeyFinModelEntity, IkeyFnFormulModelEntity } from "../types/finModel.type";
@@ -8,7 +8,9 @@ import { IkeyFinModelEntity, IkeyFnFormulModelEntity } from "../types/finModel.t
 
 export const useFinModelFormuls = (deportament: IgroopsDep, mounhDate: string) => {
 
-	useMemo(() => new FomulsClassFinModel(deportament.finmodel), [mounhDate])
+	useEffect(() => {
+		new FomulsClassFinModel(deportament.finmodel)
+	}, [mounhDate, deportament])
 
 	const checkFormul = (category: IkeyFinModelEntity, keyFn: IkeyFnFormulModelEntity, value: any) => {
 		const formul = finModelEntity[category].formul

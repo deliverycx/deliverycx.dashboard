@@ -7,7 +7,6 @@ export const useChartsDeportamentsRequest = (deportamentid: string | string[]) =
 	const getChartsDeportamet = async () => {
 		try {
 			const { data } = await axiosInstance.get(`charts/chart?deportamentid=${deportamentid}`)
-			console.log(data);
 			if (data) {
 				setChartsDeportament(data[0])
 			}

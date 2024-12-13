@@ -5,31 +5,33 @@ import { useCallback, useEffect, useMemo } from "react";
 
 type IcaseMetric = "virukaSum" | "rashodSum" | "profitSum" | "profitSumProcent"
 
-export const useIndicatorMetrics = (metrics: { rageFinModel: { modelCurrent: IfinModelMouth, modelPrevious: IfinModelMouth } }, finModel: any) => {
+export const useIndicatorMetrics = (metrics: IfinModelMouth['metric'], finModel: any) => {
 
 	const helpSum = (a: any, b: AnyARecord) => {
 		const sum = Number(a) - Number(b)
 		return Number.isInteger(sum) ? sum : sum.toFixed(1)
 	}
 
-	const findSum = (rage: any): (currentValue: string, prevSum: any) => { currentMetric: any, previosMetric: any } => {
-		return (currentValue: string, prevSum: any) => {
-			if (rage && currentValue && prevSum) {
-				const current = rage.modelCurrent && rage.modelCurrent.metric
-				const prev = rage.modelPrevious && rage.modelPrevious.metric
-				return current && prev && {
-					currentMetric: {
-						sum: helpSum(current[currentValue], prevSum),
-						trend: Number(current[currentValue]) >= Number(prevSum) ? "up" : "down",
-						colrs: Number(current[currentValue]) >= Number(prevSum) ? "green" : "red"
+	const findSum = (currentMetric: any) => {
 
-					},
-					previosMetric: {
-						sum: helpSum(prev[currentValue], prevSum),
-						trend: Number(prev[currentValue]) >= Number(prevSum) ? "up" : "down",
-						colrs: Number(prev[currentValue]) >= Number(prevSum) ? "green" : "red"
+		return (metricName: string, openModel: any) => {
+			if (currentMetric && metricName && openModel) {
+				if (metricName === 'rashodSum') {
+					return {
+						sum: helpSum(currentMetric[metricName], openModel),
+						trend: Number(currentMetric[metricName]) >= Number(openModel) ? "down" : "up",
+						colrs: Number(currentMetric[metricName]) >= Number(openModel) ? "green" : "red"
+
+					}
+				} else {
+					return {
+						sum: helpSum(currentMetric[metricName], openModel),
+						trend: Number(currentMetric[metricName]) >= Number(openModel) ? "up" : "down",
+						colrs: Number(currentMetric[metricName]) >= Number(openModel) ? "green" : "red"
+
 					}
 				}
+
 			}
 
 		}
@@ -38,8 +40,8 @@ export const useIndicatorMetrics = (metrics: { rageFinModel: { modelCurrent: Ifi
 	}
 
 	const actualMetric = useCallback((caseMetric: IcaseMetric) => {
-		if (metrics && metrics.rageFinModel && finModel) {
-			const fn = findSum(metrics.rageFinModel)
+		if (metrics && finModel) {
+			const fn = findSum(metrics)
 			switch (caseMetric) {
 				case 'virukaSum': return finModel.averageRevenue && fn('virukaSum', finModel.averageRevenue.opening)
 				case 'rashodSum': return finModel.expenses && fn('rashodSum', finModel.expenses.opening)

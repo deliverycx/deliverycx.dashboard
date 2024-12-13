@@ -25,9 +25,20 @@ export class FinModelControllers {
 
 	@Post('generalRating')
 	async general(
-		@Query() query: { deportament: string, mouth: string },
+		@Query() query: { typemodel: string },
 		@Body() body: { currenMouth: string, prevMouth: string }
 	) {
-		return await this.finModelQueries.queryGeneryData(body)
+
+		return await this.finModelQueries.queryGeneryData(body, query.typemodel)
+
+	}
+
+	@Post('generalRatinginMount')
+	async generalmouth(
+		@Query() query: { typemodel: string },
+		@Body() body: string[]
+	) {
+		return await this.finModelQueries.queryRatingMouth(body, query.typemodel)
+
 	}
 }

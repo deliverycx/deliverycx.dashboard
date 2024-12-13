@@ -2,13 +2,12 @@ import { MediumButton } from "@shared/ui/buttons"
 import { IgroopsDep } from "features/deportamensListChoise/types/groopsdeportemets.type"
 import { FC } from "react"
 import { useDeportamentInfoSettingForm } from "../hooks/useCaseDeportamentInfoFromic"
-import { Switch, TextField } from "@mui/material"
+import { MenuItem, Switch, TextField } from "@mui/material"
 
 export const DeportamentInfoSettingForm: FC<{ deportament: IgroopsDep }> = ({ deportament }) => {
 	const { formik } = useDeportamentInfoSettingForm(deportament)
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(event.target.checked);
 		formik.setFieldValue("okupation", event.target.checked)
 	}
 	return (
@@ -59,6 +58,30 @@ export const DeportamentInfoSettingForm: FC<{ deportament: IgroopsDep }> = ({ de
 								onChange={handleChange}
 								inputProps={{ 'aria-label': 'controlled' }}
 							/>
+						</div>
+					</div>
+					<div className="deportament_info-item">
+						<span className="deportament_info-item_title">Финансовая модель</span>
+						<div className="deportament_info-item_value">
+							<TextField
+								id="typemodel"
+								name="typemodel"
+								select
+								label="тип финансовой модели"
+								defaultValue="EUR"
+								onChange={formik.handleChange}
+								variant="filled"
+							>
+								<MenuItem key="regions" value="regions">
+									Регионы
+								</MenuItem>
+								<MenuItem key="menu" value="menu">
+									Повышеное меню
+								</MenuItem>
+								<MenuItem key="moscow" value="moscow">
+									Москва
+								</MenuItem>
+							</TextField>
 						</div>
 					</div>
 				</div>

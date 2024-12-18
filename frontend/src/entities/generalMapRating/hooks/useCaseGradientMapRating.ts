@@ -15,9 +15,11 @@ export const useCaseGradientMapRating = (map: { currenMapRating: any, prevMapRat
 	const deportametsByColor = (color: colorName) => {
 		const findCurrentDeps = findMap(map.currenMapRating, color)
 		const findPrevDeps = findMap(map.prevMapRating, color)
+
+
 		return {
 			numberColorDeportaments: findCurrentDeps.length,
-			diffNumber: findCurrentDeps.length - findPrevDeps.length,
+			diffNumber: findPrevDeps.length !== 0 ? findCurrentDeps.length - findPrevDeps.length : 0,
 			map: findCurrentDeps
 		}
 	}

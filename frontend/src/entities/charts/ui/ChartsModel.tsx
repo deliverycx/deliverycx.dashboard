@@ -26,10 +26,14 @@ export const ChartsModel: FC<IProps> = ({ chart, settings }) => {
 		<div className="chart_box">
 			<div className="chart_box_title">
 				<div className="chart_box_title-lable">{settings.lable}</div>
-				<div className="chart_box_title-metric">
-					<span> {currentMounth.date} -  </span>
-					<span>{currentMounth.value} ₽</span>
-				</div>
+				{
+					currentMounth.value &&
+					<div className="chart_box_title-metric">
+						<span> {currentMounth.date} -  </span>
+						<span>{currentMounth.value} ₽</span>
+					</div>
+				}
+
 			</div>
 			<LineChart
 
@@ -49,6 +53,7 @@ export const ChartsModel: FC<IProps> = ({ chart, settings }) => {
 				width={600}
 				height={300}
 				grid={{ horizontal: true }}
+				margin={{ left: 70 }}
 			/>
 		</div>
 	)

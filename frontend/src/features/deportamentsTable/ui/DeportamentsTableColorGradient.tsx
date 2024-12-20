@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { TableSortLabel } from "@mui/material";
 import { keyDifferenceRatingParams } from "entities/generalMapRating/types/colorRating.type";
+import "./style.scss"
 
 export const DeportamentsTableColorGradient: FC<{ deportametColorList: any }> = ({ deportametColorList }) => {
 	const { sortedDeportametColorList, orderBy, handlerSorted, keyDiffRating } = useCaseDeportamentsTable(deportametColorList)
@@ -47,7 +48,7 @@ export const DeportamentsTableColorGradient: FC<{ deportametColorList: any }> = 
 						sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 					>
 						<TableCell component="th" scope="row">
-							{row.deportamentName}
+							<a className="deportament_link" target="_blank" href={`/deportament/${row.deportamentIds}`}>{row.deportamentName}</a>
 						</TableCell>
 						<TableCell align="right">{(Math.floor(row[keyDiffRating] * 100) / 100)}</TableCell>
 					</TableRow>

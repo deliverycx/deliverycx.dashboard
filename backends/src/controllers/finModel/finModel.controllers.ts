@@ -22,6 +22,11 @@ export class FinModelControllers {
 		return this.finModelQueries.queryFinModelData(query.deportament)
 	}
 
+	@Post('generalRatinginDeportament')
+	getratingBuDeportament(@Body() body: { deportament: string, mounth: string[] }) {
+		return this.finModelQueries.queryDeportamentRatingAllMounths(body.deportament, body.mounth)
+	}
+
 
 	@Post('generalRating')
 	async general(

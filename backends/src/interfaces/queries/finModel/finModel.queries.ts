@@ -25,4 +25,11 @@ export class FinModelQueries {
 		const filter = this.finModelSerivses.filterGroopByTypeModel(result, typemodel)
 		return filter && filter.length !== 0 && this.finModelSerivses.deportamentsGroopsSrednieValue(filter)
 	}
+
+	async queryDeportamentRatingAllMounths(deportament: string, mouthArr: string[]) {
+		const result = await this.finModelRepositories.rageModelBuDeportament(deportament, mouthArr)
+		console.log(result);
+		return result
+
+	}
 }

@@ -9,6 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import { TableSortLabel } from "@mui/material";
 import { colorName, keyDifferenceRatingParams } from "entities/generalMapRating/types/colorRating.type";
 import { useCaseDeportamentsTableGeneral } from "../hooks/useCaseDeportamentsTableGeneral";
+import "./style.scss"
+import { DeportamentModalChartGeneral } from "./DeportamentModalChartGeneral";
 
 export const DeportamentsTableColorGeneral: FC<{ handlerColorList: any, deportametColorList: any }> = ({ deportametColorList, handlerColorList }) => {
 	const { sortedDeportametColorList, orderBy, handlerSorted } = useCaseDeportamentsTableGeneral(deportametColorList, handlerColorList)
@@ -21,6 +23,7 @@ export const DeportamentsTableColorGeneral: FC<{ handlerColorList: any, deportam
 			case colorName.red: return "#f3a79f"
 		}
 	}
+	console.log(deportametColorList);
 
 	return (
 		<Table sx={{ minWidth: 500 }} aria-label="simple table">
@@ -62,10 +65,19 @@ export const DeportamentsTableColorGeneral: FC<{ handlerColorList: any, deportam
 						sx={{ '&:last-child td, &:last-child th': { border: 0 }, backgroundColor: colorRow(row.color) }}
 					>
 						<TableCell component="th" scope="row">
-							{row.deportamentName}
+							<a className="deportament_link" target="_blank" href={`/deportament/${row.deportamentIds}`}>{row.deportamentName}</a>
 						</TableCell>
-						<TableCell align="right">{row.profitDifferenceOpening}</TableCell>
-						<TableCell align="right">{(Math.floor(row.profitDifferencePlan * 100) / 100)}</TableCell>
+						<TableCell align="right">
+							<DeportamentModalChartGeneral deportament={row.deportamentIds} typemodel="profitDifferenceOpening">
+								{row.profitDifferenceOpening}
+							</DeportamentModalChartGeneral>
+
+						</TableCell>
+						<TableCell align="right">
+							<DeportamentModalChartGeneral deportament={row.deportamentIds} typemodel="profitDifferencePlan">
+								{(Math.floor(row.profitDifferencePlan * 100) / 100)}
+							</DeportamentModalChartGeneral>
+						</TableCell>
 					</TableRow>
 				))}
 			</TableBody>

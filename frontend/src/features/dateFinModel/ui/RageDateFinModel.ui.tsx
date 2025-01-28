@@ -11,7 +11,7 @@ import "./style.scss"
 
 
 export const RageDateFinModel: FC<{ set: any }> = ({ set }) => {
-	const [mounthDateCurrent, setMounthDateCurrent] = useState<any>(dayjs())
+	const [mounthDateCurrent, setMounthDateCurrent] = useState<any>(dayjs().year(2024))
 
 
 	useEffect(() => {

@@ -10,7 +10,7 @@ import "./style.scss"
 
 
 export const SettingDatePicker: FC<{ setDate: any }> = ({ setDate }) => {
-	const [selectedDate, setSelectedDate] = useState<any>(dayjs());
+	const [selectedDate, setSelectedDate] = useState<any>(dayjs().year(2024));
 
 
 	useEffect(() => {

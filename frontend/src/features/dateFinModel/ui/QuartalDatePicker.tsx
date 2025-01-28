@@ -11,7 +11,7 @@ import { DateMouth } from 'features/heatMapRatingDates';
 import { Stack, Button } from '@mui/material';
 
 export const QuartalDatePicker: FC<{ setDate: any }> = ({ setDate }) => {
-	const [selectedDate, setSelectedDate] = useState<any>(dayjs());
+	const [selectedDate, setSelectedDate] = useState<any>(dayjs().year(2024));
 	const [datesList, setDatesList] = useState<any>([]);
 
 	const handlerAddDates = (date: any) => {

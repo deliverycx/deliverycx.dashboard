@@ -18,6 +18,9 @@ export const useCaseColorRating = (mapRating: any) => {
 		const minProfitDiff = Math.min(...profitDiffValues);
 		const maxProfitDiff = Math.max(...profitDiffValues);
 
+		function normalize(value: number): number {
+			return (value - minProfitDiff) / (maxProfitDiff - minProfitDiff);
+		}
 
 		// Шаг 2: Разделить диапазон на четыре части
 		/*
@@ -28,32 +31,39 @@ export const useCaseColorRating = (mapRating: any) => {
 		*/
 		//console.log("profitDiffValues", profitDiffValues);
 
+		const redLimit = 0.25; // Нормализованное значение для 25%
+		const yellowLimit = 0.5; // Нормализованное значение для 50%
+		const lightGreenLimit = 0.75;
 
+		/*
 		const datas = profitDiffValues;
 		const redLimit = ss.quantile(datas, 0.25);
 		const yellowLimit = ss.quantile(datas, 0.5);
 		const lightGreenLimit = ss.quantile(datas, 0.75);
 		const green = ss.quantile(datas, 1);
+		*/
 
-		console.log("limit", redLimit, yellowLimit, lightGreenLimit, green);
+
 		// Шаг 3: Функция для определения цвета
 		function getColor(profitDiff: any) {
-			/*
+
 			if (profitDiff <= redLimit) return colorName.red;
 			if (profitDiff <= yellowLimit) return colorName.yelow;
 			if (profitDiff <= lightGreenLimit) return colorName.witegreen;
 			return colorName.green;
-			*/
+			/*
 			if (profitDiff <= redLimit) return colorName.red;
 			if (profitDiff > redLimit && profitDiff <= yellowLimit) return colorName.yelow;
 			if (profitDiff > yellowLimit && profitDiff <= lightGreenLimit) return colorName.witegreen;
 			if (profitDiff >= lightGreenLimit) return colorName.green;
+			*/
 		}
 
 
 		// Шаг 4: Применить функцию ко всем объектам
 		const result = data.map((item: any) => {
-			const color = getColor(item[key]);
+			const normalizedValue = normalize(item[key]);
+			const color = getColor(normalizedValue);
 
 			return {
 				...item,

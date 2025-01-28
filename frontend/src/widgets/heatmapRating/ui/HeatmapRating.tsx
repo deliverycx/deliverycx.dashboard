@@ -41,16 +41,16 @@ export const HeatmapRating = () => {
 					<div className="heatmap">
 						<h1 className="t1_title">Количество заведений по прибыли (в руб)</h1>
 						<ColorGradientMapRating
-							currenMapRating={handlerChoiseRating(mapRating.currenDeportamets, keyDifferenceRatingParams.profitDifferenceOpening)}
-							prevMapRating={handlerChoiseRating(mapRating.prevDeportamens, keyDifferenceRatingParams.profitDifferenceOpening)}
+							currenMapRating={mapRating.currenDeportamets.length !== 0 ? handlerChoiseRating(mapRating.currenDeportamets, keyDifferenceRatingParams.profitDifferenceOpening) : []}
+							prevMapRating={mapRating.prevDeportamens.length !== 0 ? handlerChoiseRating(mapRating.prevDeportamens, keyDifferenceRatingParams.profitDifferenceOpening) : []}
 							keyMap={keyDifferenceRatingParams.profitDifferenceOpening}
 						/>
 					</div>
 					<div className="heatmap">
 						<h1 className="t1_title">Количество заведений по прибыли (в %)</h1>
 						<ColorGradientMapRating
-							currenMapRating={handlerChoiseRating(mapRating.currenDeportamets, keyDifferenceRatingParams.profitDifferencePlan)}
-							prevMapRating={handlerChoiseRating(mapRating.prevDeportamens, keyDifferenceRatingParams.profitDifferencePlan)}
+							currenMapRating={mapRating.currenDeportamets.length !== 0 ? handlerChoiseRating(mapRating.currenDeportamets, keyDifferenceRatingParams.profitDifferencePlan) : []}
+							prevMapRating={mapRating.prevDeportamens.length !== 0 ? handlerChoiseRating(mapRating.prevDeportamens, keyDifferenceRatingParams.profitDifferencePlan) : []}
 							keyMap={keyDifferenceRatingParams.profitDifferencePlan}
 						/>
 					</div>

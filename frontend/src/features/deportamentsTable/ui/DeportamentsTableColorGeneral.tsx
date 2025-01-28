@@ -23,7 +23,7 @@ export const DeportamentsTableColorGeneral: FC<{ handlerColorList: any, deportam
 			case colorName.red: return "#f3a79f"
 		}
 	}
-	console.log(deportametColorList);
+
 
 	return (
 		<Table sx={{ minWidth: 500 }} aria-label="simple table">

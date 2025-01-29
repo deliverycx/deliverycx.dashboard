@@ -3,18 +3,18 @@ import { useEffect, useState } from "react"
 import dayjs from 'dayjs';
 
 const months = [
-	dayjs().month(0).format('YYYY-MM'),
-	dayjs().month(1).format('YYYY-MM'),
-	dayjs().month(2).format('YYYY-MM'),
-	dayjs().month(3).format('YYYY-MM'),
-	dayjs().month(4).format('YYYY-MM'),
-	dayjs().month(5).format('YYYY-MM'),
-	dayjs().month(6).format('YYYY-MM'),
-	dayjs().month(7).format('YYYY-MM'),
-	dayjs().month(8).format('YYYY-MM'),
-	dayjs().month(9).format('YYYY-MM'),
-	dayjs().month(10).format('YYYY-MM'),
-	dayjs().month(11).format('YYYY-MM'),
+	dayjs().year(2024).month(0).format('YYYY-MM'),
+	dayjs().year(2024).month(1).format('YYYY-MM'),
+	dayjs().year(2024).month(2).format('YYYY-MM'),
+	dayjs().year(2024).month(3).format('YYYY-MM'),
+	dayjs().year(2024).month(4).format('YYYY-MM'),
+	dayjs().year(2024).month(5).format('YYYY-MM'),
+	dayjs().year(2024).month(6).format('YYYY-MM'),
+	dayjs().year(2024).month(7).format('YYYY-MM'),
+	dayjs().year(2024).month(8).format('YYYY-MM'),
+	dayjs().year(2024).month(9).format('YYYY-MM'),
+	dayjs().year(2024).month(10).format('YYYY-MM'),
+	dayjs().year(2024).month(11).format('YYYY-MM'),
 ];
 
 export const useChartDeportamentGeneral = () => {
@@ -46,7 +46,7 @@ export const useChartDeportamentGeneral = () => {
 		})
 	}
 
-	console.log(generalDeportament);
+
 
 	return {
 		generalDeportament,

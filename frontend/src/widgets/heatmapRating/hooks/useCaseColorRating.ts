@@ -1,18 +1,15 @@
 import { useEffect, useMemo } from "react";
-import { useRequestGeneralRatingFinModel } from "./requestGeneralRatingFinModel"
+import { useRequestGeneralRatingFinModel } from "./requestGeneralRatingFinModel";
 import { colorName } from "entities/generalMapRating";
-import * as ss from 'simple-statistics';
+import * as ss from "simple-statistics";
 
 export const useCaseColorRating = (mapRating: any) => {
-
-
 	const generalRatingGradation = (data: any, key: string) => {
-
 		const profitDiffValues = data.map((item: any) => {
 			if (!item[key]) {
-				return 0
+				return 0;
 			} else {
-				return item[key]
+				return item[key];
 			}
 		});
 		const minProfitDiff = Math.min(...profitDiffValues);
@@ -22,26 +19,27 @@ export const useCaseColorRating = (mapRating: any) => {
 			return (value - minProfitDiff) / (maxProfitDiff - minProfitDiff);
 		}
 
+
 		// Шаг 2: Разделить диапазон на четыре части
-		/*
+		/**/
 		const range = maxProfitDiff - minProfitDiff;
 		const redLimit = minProfitDiff + range * 0.25;
 		const yellowLimit = minProfitDiff + range * 0.5;
 		const lightGreenLimit = minProfitDiff + range * 0.75;
-		*/
+
 		//console.log("profitDiffValues", profitDiffValues);
-
-		const redLimit = 0.25; // Нормализованное значение для 25%
-		const yellowLimit = 0.5; // Нормализованное значение для 50%
-		const lightGreenLimit = 0.75;
-
 		/*
-		const datas = profitDiffValues;
-		const redLimit = ss.quantile(datas, 0.25);
-		const yellowLimit = ss.quantile(datas, 0.5);
-		const lightGreenLimit = ss.quantile(datas, 0.75);
-		const green = ss.quantile(datas, 1);
-		*/
+				const redLimit = 0.25; // Нормализованное значение для 25%
+				const yellowLimit = 0.5; // Нормализованное значение для 50%
+				const lightGreenLimit = 0.75;
+		
+				
+				const datas = profitDiffValues;
+				const redLimit = ss.quantile(datas, 0.25);
+				const yellowLimit = ss.quantile(datas, 0.5);
+				const lightGreenLimit = ss.quantile(datas, 0.75);
+				const green = ss.quantile(datas, 1);
+				*/
 
 
 		// Шаг 3: Функция для определения цвета
@@ -52,42 +50,41 @@ export const useCaseColorRating = (mapRating: any) => {
 			if (profitDiff <= lightGreenLimit) return colorName.witegreen;
 			return colorName.green;
 			/*
-			if (profitDiff <= redLimit) return colorName.red;
-			if (profitDiff > redLimit && profitDiff <= yellowLimit) return colorName.yelow;
-			if (profitDiff > yellowLimit && profitDiff <= lightGreenLimit) return colorName.witegreen;
-			if (profitDiff >= lightGreenLimit) return colorName.green;
-			*/
+		if (profitDiff <= redLimit) return colorName.red;
+		if (profitDiff > redLimit && profitDiff <= yellowLimit) return colorName.yelow;
+		if (profitDiff > yellowLimit && profitDiff <= lightGreenLimit) return colorName.witegreen;
+		if (profitDiff >= lightGreenLimit) return colorName.green;
+		*/
 		}
-
 
 		// Шаг 4: Применить функцию ко всем объектам
 		const result = data.map((item: any) => {
 			const normalizedValue = normalize(item[key]);
-			const color = getColor(normalizedValue);
+			const color = getColor(item[key]);
 
 			return {
 				...item,
-				color
+				color,
 			};
 		});
 
-		return result
-
-	}
+		return result;
+	};
 
 	const sortedMap = (map: any, key: string) => {
-		const sortedResult = map.sort((a: any, b: any) => b[key] - a[key])
-		return sortedResult
-	}
+		const sortedResult = map.sort((a: any, b: any) => b[key] - a[key]);
+		return sortedResult;
+	};
 
-	const handlerChoiseRating = useMemo(() => (map: any[], key: string) => {
-		const result = generalRatingGradation(map, key)
-		return sortedMap(result, key)
-
-	}, [mapRating])
+	const handlerChoiseRating = useMemo(
+		() => (map: any[], key: string) => {
+			const result = generalRatingGradation(map, key);
+			return sortedMap(result, key);
+		},
+		[mapRating]
+	);
 
 	return {
-		handlerChoiseRating
-	}
-
-}
+		handlerChoiseRating,
+	};
+};

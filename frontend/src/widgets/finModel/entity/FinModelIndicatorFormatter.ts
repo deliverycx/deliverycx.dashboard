@@ -38,11 +38,12 @@ export class FinModelIndicatorFormatter {
 		}
 	}
 	//стрелки
-	trendIndicator(key: keyof typeof finModelEntity) {
+	trendIndicator(key: keyof typeof finModelEntity, opening: number) {
 
 		if (this.rageFinModel && this.finModelOpen) {
 			if (this.rageFinModel.modelCurrent.model[key].fact === 0) return
-			return finModelEntity[key].mark(this.rageFinModel.modelCurrent.model[key].fact)
+
+			return finModelEntity[key].mark(this.rageFinModel.modelCurrent.model[key].fact, opening)
 		}
 	}
 }

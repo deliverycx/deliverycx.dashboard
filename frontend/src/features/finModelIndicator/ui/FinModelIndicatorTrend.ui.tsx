@@ -6,7 +6,9 @@ export const FinModelIndicatorTrend: FC<{ finKey: string }> = ({ finKey }) => {
 	const useCase = useContext(FinModelContext)
 	const { finModelIndicatorFormatter } = useCase
 	//console.log(finModelIndicatorFormatter);
-	const arrowTrend = finModelIndicatorFormatter.trendIndicator(finKey)
+
+
+	const arrowTrend = finModelIndicatorFormatter.trendIndicator(finKey, finModelIndicatorFormatter.finModelOpen[finKey].opening)
 
 	return (
 		<>

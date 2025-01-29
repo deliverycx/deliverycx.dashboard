@@ -44,10 +44,16 @@ export class FomulsClassFinModel {
 
 	static trendFormul(arow: "up" | "down") {
 		// если up  то хорошо если down то плохо
-		return (value: number) => {
-			return arow === "down"
-				? value < 0 ? "up" : "down"
-				: value > 0 ? "down" : "up"
+
+
+		return (value: number, openung?: number) => {
+			if (arow === "down") {
+				return value < 0 ? "up" : "down"
+			}
+			if (arow === "up" && openung) {
+				return value < openung ? "down" : "up"
+			}
+
 		}
 	}
 

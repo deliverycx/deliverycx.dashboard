@@ -11,6 +11,8 @@ export const FinModelMetrics: FC<{ deportament: IgroopsDep | IpointList }> = ({ 
 	const useCase = useContext(FinModelContext)
 	const { finModelIndicatorFormatter, currentMouthFinModelMetrics } = useCase
 	const useMetricInd = useIndicatorMetrics(currentMouthFinModelMetrics, deportament.finmodel)
+
+	console.log(currentMouthFinModelMetrics);
 	return (
 		<>
 			{

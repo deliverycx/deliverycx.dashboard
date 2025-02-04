@@ -10,6 +10,7 @@ export const DeportamentInfoSettingForm: FC<{ deportament: IgroopsDep }> = ({ de
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		formik.setFieldValue("okupation", event.target.checked)
 	}
+
 	return (
 		<>
 
@@ -68,7 +69,7 @@ export const DeportamentInfoSettingForm: FC<{ deportament: IgroopsDep }> = ({ de
 								name="typemodel"
 								select
 								label="тип финансовой модели"
-								defaultValue="EUR"
+								value={formik.values.typemodel || ""}
 								onChange={formik.handleChange}
 								variant="filled"
 							>

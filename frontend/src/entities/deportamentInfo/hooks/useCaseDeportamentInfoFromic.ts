@@ -91,7 +91,7 @@ export const useDeportamentInfoSettingForm = (deportament: IgroopsDep) => {
 		}
 	}
 
-	console.log(formik);
+
 
 	useEffect(() => {
 
@@ -99,7 +99,7 @@ export const useDeportamentInfoSettingForm = (deportament: IgroopsDep) => {
 			formik.setFieldValue("yandex", deportament.setting.yandex)
 			formik.setFieldValue("quality", deportament.setting.quality)
 			formik.setFieldValue("okupation", deportament.setting.okupation)
-			formik.setFieldValue("typemodel", deportament.setting.menu)
+			formik.setFieldValue("typemodel", deportament.setting.typemodel)
 		}
 	}, [deportament])
 

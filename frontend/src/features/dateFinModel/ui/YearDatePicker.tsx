@@ -34,7 +34,7 @@ export const YearDatePicker: FC<{ setDate: any }> = ({ setDate }) => {
 		<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ru as unknown}
 			localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
 			<DatePicker
-				views={['year']}
+				views={['year', 'year']}
 
 				label="Выберите год"
 

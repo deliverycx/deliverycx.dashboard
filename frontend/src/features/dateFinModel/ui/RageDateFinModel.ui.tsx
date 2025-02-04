@@ -31,7 +31,7 @@ export const RageDateFinModel: FC<{ set: any }> = ({ set }) => {
 				<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ru as unknown}
 					localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
 					<DatePicker
-						views={['month']}
+						views={['month', 'year']}
 
 						label="Выберите дату"
 

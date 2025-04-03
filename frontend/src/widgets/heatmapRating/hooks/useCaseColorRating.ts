@@ -102,7 +102,7 @@ export const useCaseColorRating = (mapRating: any) => {
 			if (Excommunicado.includes(item.departamentid)) {
 				color = fixedColor(item)
 			} else {
-				color = getColor(item[key]);
+				color = fixedColor(item) //getColor(item[key]);
 			}
 
 
@@ -126,8 +126,10 @@ export const useCaseColorRating = (mapRating: any) => {
 		};
 
 		const sortedResult = map.sort((a: any, b: any) => {
-			const aColorPriority = colorPriority[a.color] ?? 3; // если цвет не распознан — в конец
-			const bColorPriority = colorPriority[b.color] ?? 3;
+			const aColorPriority = colorPriority[a.color] ?? 4; // если цвет не распознан — в конец
+			const bColorPriority = colorPriority[b.color] ?? 4;
+
+
 
 			if (aColorPriority !== bColorPriority) {
 				return aColorPriority - bColorPriority; // сначала зелёные
@@ -143,6 +145,7 @@ export const useCaseColorRating = (mapRating: any) => {
 	const handlerChoiseRating = useMemo(
 		() => (map: any[], key: string) => {
 			const result = generalRatingGradation(map, key);
+			console.log(result);
 			return sortedMap(result, key);
 		},
 		[mapRating]

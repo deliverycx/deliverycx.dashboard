@@ -13,6 +13,41 @@ const Excommunicado = [
 ]
 
 
+export const sortedDiffMapColor = (map: any, key: string, keysort: "asc" | "desc") => {
+	const colorPriority: any = {
+		[colorName.green]: 0,
+		[colorName.witegreen]: 1,
+		[colorName.yelow]: 2,
+		[colorName.red]: 3,
+	};
+
+	const sortedResult = map.sort((a: any, b: any) => {
+		const aColorPriority = colorPriority[a.color] ?? 4; // если цвет не распознан — в конец
+		const bColorPriority = colorPriority[b.color] ?? 4;
+
+		if (keysort === "asc") {
+			if (aColorPriority !== bColorPriority) {
+				return aColorPriority - bColorPriority; // сначала зелёные
+			}
+
+			return b[key] - a[key];
+		}
+		if (keysort === "desc") {
+			if (aColorPriority !== bColorPriority) {
+				return bColorPriority - aColorPriority; // сначала зелёные
+			}
+
+			return a[key] - b[key];
+		}
+
+
+	});
+
+
+	return sortedResult;
+
+};
+
 export const useCaseColorRating = (mapRating: any) => {
 	const generalRatingGradation = (data: any, key: string) => {
 		const profitDiffValues = data.map((item: any) => {
@@ -80,14 +115,14 @@ export const useCaseColorRating = (mapRating: any) => {
 			}
 
 			if (key === "profitDifferenceOpening") {
-				if (item.profitDifferenceOpening > 700000) {
+				if (item.profitDifferenceOpening < 700) {
 					return colorName.green
 				} else {
 					return getColor(item[key])
 				}
 			}
 			if (key === "profitDifferencePlan") {
-				//return getColorByProfitDifferencePlan(item.profitDifferencePlan)
+				return getColorByProfitDifferencePlan(item.profitDifferencePlan)
 			}
 
 
@@ -116,36 +151,15 @@ export const useCaseColorRating = (mapRating: any) => {
 	};
 
 
-
-	const sortedMap = (map: any, key: string) => {
-		const colorPriority: any = {
-			[colorName.green]: 0,
-			[colorName.witegreen]: 1,
-			[colorName.yelow]: 2,
-			[colorName.red]: 3,
-		};
-
-		const sortedResult = map.sort((a: any, b: any) => {
-			const aColorPriority = colorPriority[a.color] ?? 4; // если цвет не распознан — в конец
-			const bColorPriority = colorPriority[b.color] ?? 4;
+	const sortedMap = (result: any, key: any) => {
+		return sortedDiffMapColor(result, key, "asc")
+	}
 
 
-
-			if (aColorPriority !== bColorPriority) {
-				return aColorPriority - bColorPriority; // сначала зелёные
-			}
-
-			return b[key] - a[key]; // если приоритеты равны, сортируем по значению
-		});
-
-		return sortedResult;
-
-	};
 
 	const handlerChoiseRating = useMemo(
 		() => (map: any[], key: string) => {
 			const result = generalRatingGradation(map, key);
-			console.log(result);
 			return sortedMap(result, key);
 		},
 		[mapRating]
@@ -155,3 +169,5 @@ export const useCaseColorRating = (mapRating: any) => {
 		handlerChoiseRating,
 	};
 };
+
+

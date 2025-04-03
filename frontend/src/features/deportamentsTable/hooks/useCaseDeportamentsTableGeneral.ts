@@ -1,5 +1,6 @@
 import { keyDifferenceRatingParams } from "entities/generalMapRating/types/colorRating.type"
 import { useContext, useEffect, useMemo, useState } from "react"
+import { sortedDiffMapColor } from "widgets/heatmapRating/hooks/useCaseColorRating"
 import { DeportametListContext } from "widgets/heatmapRating/ui/HeatmapRating"
 
 export const useCaseDeportamentsTableGeneral = (deportametColorList: any, handlerColorList: any) => {
@@ -21,14 +22,20 @@ export const useCaseDeportamentsTableGeneral = (deportametColorList: any, handle
 		if (sortedDeportametColorList) {
 			const mass = handlerColorList(sortedDeportametColorList, orderBy.sortid)
 			if (orderBy.sorted === "asc") {
+				return sortedDiffMapColor(mass, orderBy.sortid, "asc")
+				/*
 				return mass.sort((a: any, b: any) => {
 					return a[orderBy.sortid] - b[orderBy.sortid]
 				})
+				*/
 			}
 			if (orderBy.sorted === "desc") {
+				/*
 				return mass.sort((a: any, b: any) => {
 					return b[orderBy.sortid] - a[orderBy.sortid]
 				})
+				*/
+				return sortedDiffMapColor(mass, orderBy.sortid, "desc")
 			}
 		}
 

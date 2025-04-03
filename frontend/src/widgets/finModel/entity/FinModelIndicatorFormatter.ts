@@ -31,7 +31,7 @@ export class FinModelIndicatorFormatter {
 
 	//цвета
 	performanceIndicator(key: string) {
-		if (this.rageFinModel) {
+		if (this.rageFinModel && this.rageFinModel.modelCurrent) {
 			//console.log(this.rageFinModel.modelCurrent.model[key]);
 			if (this.rageFinModel.modelCurrent.model[key].deviation === 0) return
 			return this.rageFinModel.modelCurrent.model[key].deviation < 0 ? "green" : "red"
@@ -40,7 +40,7 @@ export class FinModelIndicatorFormatter {
 	//стрелки
 	trendIndicator(key: keyof typeof finModelEntity, opening: number) {
 
-		if (this.rageFinModel && this.finModelOpen) {
+		if (this.rageFinModel && this.rageFinModel.modelCurrent && this.finModelOpen) {
 			if (this.rageFinModel.modelCurrent.model[key].fact === 0) return
 
 			return finModelEntity[key].mark(this.rageFinModel.modelCurrent.model[key].fact, opening)

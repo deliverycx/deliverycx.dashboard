@@ -18,7 +18,7 @@ export const WidgetsColum: FC<Iprops> = ({
 	styleSettings,
 	childernSettings,
 }) => {
-	console.log(childernSettings);
+
 	return (
 		<Widgets_colum
 			bgcolor={styleSettings?.bgcolor || "var(--black-to-white-white-100)"}

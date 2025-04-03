@@ -3,6 +3,16 @@ import { useRequestGeneralRatingFinModel } from "./requestGeneralRatingFinModel"
 import { colorName } from "entities/generalMapRating";
 import * as ss from "simple-statistics";
 
+//хард код!!!
+const Excommunicado = [
+	"24cd87c0-91b1-41f0-91c6-b9758deae4ae",
+	"e7e2349c-2502-4206-8bf2-07455e371f73",
+	"646df319-3183-43f2-8d5a-02e37e915f19",
+	"501b47ce-0abe-4ba0-9e79-0011aecb7b60",
+	"98021fee-f3e9-4ce8-acda-da5cbd136c50"
+]
+
+
 export const useCaseColorRating = (mapRating: any) => {
 	const generalRatingGradation = (data: any, key: string) => {
 		const profitDiffValues = data.map((item: any) => {
@@ -20,7 +30,7 @@ export const useCaseColorRating = (mapRating: any) => {
 		}
 
 
-		// Шаг 2: Разделить диапазон на четыре части
+		// Разделить диапазон на четыре части
 		/**/
 		const range = maxProfitDiff - minProfitDiff;
 		const redLimit = minProfitDiff + range * 0.25;
@@ -42,7 +52,7 @@ export const useCaseColorRating = (mapRating: any) => {
 				*/
 
 
-		// Шаг 3: Функция для определения цвета
+		//Функция для определения цвета
 		function getColor(profitDiff: any) {
 
 			if (profitDiff <= redLimit) return colorName.red;
@@ -57,10 +67,44 @@ export const useCaseColorRating = (mapRating: any) => {
 		*/
 		}
 
-		// Шаг 4: Применить функцию ко всем объектам
+
+
+		const fixedColor = (item: any) => {
+
+			const getColorByProfitDifferencePlan = (value: number): string => {
+
+				if (value > 20) return colorName.green;
+				if (value <= 20 && value >= 10) return colorName.witegreen;
+				if (value < 10 && value >= -40) return colorName.yelow;
+				return colorName.red;
+			}
+
+			if (key === "profitDifferenceOpening") {
+				if (item.profitDifferenceOpening > 700000) {
+					return colorName.green
+				} else {
+					return getColor(item[key])
+				}
+			}
+			if (key === "profitDifferencePlan") {
+				return getColorByProfitDifferencePlan(item.profitDifferencePlan)
+			}
+
+
+
+		}
+
+
+
+		//Применить функцию ко всем объектам
 		const result = data.map((item: any) => {
-			const normalizedValue = normalize(item[key]);
-			const color = getColor(item[key]);
+			let color
+			if (Excommunicado.includes(item.departamentid)) {
+				color = fixedColor(item)
+			} else {
+				color = getColor(item[key]);
+			}
+
 
 			return {
 				...item,
@@ -71,9 +115,29 @@ export const useCaseColorRating = (mapRating: any) => {
 		return result;
 	};
 
+
+
 	const sortedMap = (map: any, key: string) => {
-		const sortedResult = map.sort((a: any, b: any) => b[key] - a[key]);
+		const colorPriority: any = {
+			[colorName.green]: 0,
+			[colorName.witegreen]: 1,
+			[colorName.yelow]: 2,
+			[colorName.red]: 3,
+		};
+
+		const sortedResult = map.sort((a: any, b: any) => {
+			const aColorPriority = colorPriority[a.color] ?? 3; // если цвет не распознан — в конец
+			const bColorPriority = colorPriority[b.color] ?? 3;
+
+			if (aColorPriority !== bColorPriority) {
+				return aColorPriority - bColorPriority; // сначала зелёные
+			}
+
+			return b[key] - a[key]; // если приоритеты равны, сортируем по значению
+		});
+
 		return sortedResult;
+
 	};
 
 	const handlerChoiseRating = useMemo(

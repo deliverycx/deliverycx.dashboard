@@ -33,14 +33,14 @@ export const DeportamentModalChartGeneral: FC<IProps> = ({ deportament, typemode
 
 	const handleClickOpen = () => {
 		setOpen(true);
-		getDeportamentGeneralAllMounth(deportament, typemodel)
+		//getDeportamentGeneralAllMounth(deportament, typemodel)
 	};
 	const handleClose = () => {
 		setOpen(false);
 	}
 	return (
 		<>
-			<div className="linkmodal_chart" onClick={handleClickOpen}>{children}</div>
+			<div className="linkmodal_chart" >{children}</div>
 			<BootstrapDialog
 				onClose={handleClose}
 				aria-labelledby="customized-dialog-title"

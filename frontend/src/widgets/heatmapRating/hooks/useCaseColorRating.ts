@@ -87,7 +87,7 @@ export const useCaseColorRating = (mapRating: any) => {
 				}
 			}
 			if (key === "profitDifferencePlan") {
-				return getColorByProfitDifferencePlan(item.profitDifferencePlan)
+				//return getColorByProfitDifferencePlan(item.profitDifferencePlan)
 			}
 
 

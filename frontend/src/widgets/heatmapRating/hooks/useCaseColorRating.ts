@@ -115,7 +115,7 @@ export const useCaseColorRating = (mapRating: any) => {
 			}
 
 			if (key === "profitDifferenceOpening") {
-				if (item.profitDifferenceOpening < 700) {
+				if (item.profitDifferenceOpening > 700000) {
 					return colorName.green
 				} else {
 					return getColor(item[key])

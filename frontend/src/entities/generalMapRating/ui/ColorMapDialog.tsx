@@ -25,7 +25,7 @@ export const ColorMapDialog: FC<IProps> = ({ state, maps }) => {
 	return (
 		<Dialog
 			onClose={handleClose}
-			aria-labelledby="customized-dialog-title"
+			aria-describedby="alert-dialog-slide-description"
 			open={(open && deportametColorList)}
 
 		>

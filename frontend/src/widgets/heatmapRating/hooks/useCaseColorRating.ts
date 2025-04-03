@@ -102,7 +102,7 @@ export const useCaseColorRating = (mapRating: any) => {
 			if (Excommunicado.includes(item.departamentid)) {
 				color = fixedColor(item)
 			} else {
-				color = fixedColor(item) //getColor(item[key]);
+				color = getColor(item[key]);
 			}
 
 

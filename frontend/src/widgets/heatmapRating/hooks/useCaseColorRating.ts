@@ -115,15 +115,23 @@ export const useCaseColorRating = (mapRating: any) => {
 			}
 
 			if (key === "profitDifferenceOpening") {
-				if (item.profitDifferenceOpening > 700000) {
+				if (item.profitDifferenceOpening > 840000) {
 					return colorName.green
+				} else if (item.profitDifferenceOpening <= 840000 && item.profitDifferenceOpening >= 560000) {
+					return colorName.witegreen
+				} else if (item.profitDifferenceOpening <= 560000 && item.profitDifferenceOpening >= -280000) {
+					return colorName.yelow;
+				} else if (item.profitDifferenceOpening > -280000) {
+					return colorName.red;
 				} else {
 					return getColor(item[key])
 				}
 			}
+			/*
 			if (key === "profitDifferencePlan") {
 				return getColorByProfitDifferencePlan(item.profitDifferencePlan)
 			}
+			*/
 
 
 

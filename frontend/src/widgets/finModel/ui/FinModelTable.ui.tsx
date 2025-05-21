@@ -1,4 +1,4 @@
-import { FC, useContext } from "react"
+import { FC, useContext, useState } from "react"
 import { FinModelContext } from "./HOC.DetailedfinModel.ui"
 import { inputFromNameFinModel } from "entities/deportamentsFinModel/entity/finModelDomain";
 import { FinModelIndicatorPerfomans, FinModelIndicatorTrend } from "features/finModelIndicator/indext";
@@ -6,6 +6,7 @@ import "./finModel.scss"
 import { IgroopsDep } from "features/deportamensListChoise/types/groopsdeportemets.type";
 import { FinModelPrevPeriod } from "features/finModelIndicator/ui/FinModelPrevPeriod";
 import styled from "styled-components"
+import { Popper, Box } from "@mui/material";
 
 export const FinModelTable = () => {
 	const useCase = useContext(FinModelContext)
@@ -56,14 +57,16 @@ export const FinModelTable = () => {
 	}
 
 
+
+
 	return (
 
 		<>
 			<div className="fintable-container">
 				<div className="header">Показатель</div>
-				<div className="header">Факт, руб</div>
+
 				<div className="header">Доля в затратах</div>
-				<div className="header">Факт</div>
+				<div className="header">Факт в %</div>
 				<div className="header">% отклонения от среднего</div>
 
 

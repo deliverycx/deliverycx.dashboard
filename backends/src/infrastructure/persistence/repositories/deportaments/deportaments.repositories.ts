@@ -3,6 +3,7 @@ import { InjectModel } from "nestjs-typegoose";
 import { DeportamentsModel } from "../../entities/departaments.model";
 import { SredniyChekModel } from "../../entities/sredniychek.model";
 import { Injectable } from "@nestjs/common";
+import { top5 } from "src/application/const/deportament.conts";
 
 @Injectable()
 export class DeportamentsRepositories {
@@ -12,7 +13,9 @@ export class DeportamentsRepositories {
 	) { }
 
 	async deportamentsList() {
-		return await this.deportamentsModel.find({})
+		const res = await this.deportamentsModel.find({})
+		const dep5 = res.filter((val) => top5.includes(val.departamentid))
+		return dep5
 	}
 
 	async findDeportament(departamentid: string) {

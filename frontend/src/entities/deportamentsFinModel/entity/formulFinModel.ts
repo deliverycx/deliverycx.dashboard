@@ -16,6 +16,7 @@ export class FomulsClassFinModel {
 
 		const percentage = (difference / factRub) * 100;
 
+
 		return percentage.toFixed(2)
 	}
 	static deviationModel(cats: string, deviation: number) {
@@ -34,7 +35,9 @@ export class FomulsClassFinModel {
 
 
 	static averageCostbyFact(cats: string, { avarage, cost }: { avarage: number, cost: number }) {
+		console.log(avarage, cost);
 		const result = (avarage * cost) / 100
+		console.log(result);
 		return Math.trunc(result)
 	}
 	static averageFactbyCost(cats: string, { avarage, fact }: { avarage: number, fact: number }) {

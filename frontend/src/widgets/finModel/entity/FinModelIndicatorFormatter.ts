@@ -43,7 +43,7 @@ export class FinModelIndicatorFormatter {
 		if (this.rageFinModel && this.rageFinModel.modelCurrent && this.finModelOpen) {
 			if (this.rageFinModel.modelCurrent.model[key].fact === 0) return
 
-			return finModelEntity[key].mark(this.rageFinModel.modelCurrent.model[key].fact, opening)
+			return finModelEntity[key] && finModelEntity[key].mark(this.rageFinModel.modelCurrent.model[key].fact, opening)
 		}
 	}
 }

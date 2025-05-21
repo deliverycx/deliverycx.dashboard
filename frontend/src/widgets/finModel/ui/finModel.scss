@@ -101,3 +101,81 @@
 		max-width: 40%;
 	}
 }
+
+.fintable_widget {
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		table-layout: fixed;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+		margin: 10px 0;
+	}
+
+	th,
+	td {
+		padding: 15px 10px;
+		text-align: center;
+		border: 1px solid #e0e0e0;
+		font-size: 14px;
+	}
+
+	th {
+		font-weight: bold;
+	}
+
+	th.group-fact {
+		background-color: #e6e6e6;
+		cursor: pointer;
+	}
+
+	th.group-model {
+		background-color: #d5ead6;
+	}
+
+
+	.group-fact.rub {
+		background-color: rgba(236, 236, 236, 0.18);
+	}
+
+	.group-fact.proc {
+		background-color: rgba(225, 225, 225, 0.26);
+
+		.finmodel_table_box {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+	}
+
+	.group-model.dol {
+		background-color: rgba(213, 234, 214, 0.17);
+	}
+
+	.group-model.plan {
+		background-color: rgba(196, 227, 203, 0.24);
+	}
+
+	.group-model.open {
+		background-color: rgba(176, 216, 187, 0.29);
+	}
+
+	.group-deviation {
+		background-color: #fbe9e038;
+	}
+
+	.left-align {
+		text-align: left;
+		background-color: #fff;
+		font-size: 16px;
+		width: 25%;
+	}
+
+	tr:nth-child(even) td.group-fact {
+		background-color: #f4f4f4;
+	}
+
+	tr:nth-child(even) td.group-model {
+		background-color: #d5ead69c;
+	}
+}

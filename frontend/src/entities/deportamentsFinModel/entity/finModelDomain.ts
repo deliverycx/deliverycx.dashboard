@@ -6,16 +6,16 @@ export const inputFromNameFinModel = {
 	rent: 'Аренда',
 	utilities: 'Коммунальные услуги',
 	consumablesAndDisposableDishes: 'Расходные средства и одноразовая посуда',
-	equipmentMaintenance: 'Ремонт и обслуживание оборудования',
+	equipmentMaintenance: 'Прочие расходы',
 	marketing: 'Маркетинг',
 	generalProductionExpenses: 'Общепроизводственные расходы',
 	taxes: 'Налоги',
 	royalties: 'Роялти',
+	averageRevenue: 'Выручка',
 	averageCheck: 'Средний чек',
 	monthlyCheckCount: 'Количество чеков в месяц',
 	dailyCheckCount: 'Количество чеков в день',
 	averageDailyRevenue: 'Среднеднeвная выручка',
-	averageRevenue: 'Выручка',
 	profit: "Прибыль",
 	expenses: "Расходы"
 };
@@ -28,6 +28,7 @@ export const finModelEntity = {
 		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
+		visible: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
 			deviationmodelData: FomulsClassFinModel.deviationModel as any,
@@ -48,6 +49,7 @@ export const finModelEntity = {
 		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
+		visible: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
 			deviationmodelData: FomulsClassFinModel.deviationModel as any,
@@ -68,6 +70,7 @@ export const finModelEntity = {
 		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
+		visible: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
 			deviationmodelData: FomulsClassFinModel.deviationModel as any,
@@ -88,6 +91,7 @@ export const finModelEntity = {
 		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
+		visible: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
 			deviationmodelData: FomulsClassFinModel.deviationModel as any,
@@ -108,6 +112,7 @@ export const finModelEntity = {
 		mark: FomulsClassFinModel.trendFormul("down"),
 		lable: "%",
 		colors: true,
+		visible: false,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
 			deviationmodelData: FomulsClassFinModel.deviationModel as any,
@@ -127,6 +132,7 @@ export const finModelEntity = {
 		iikko: false,
 		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
+		visible: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
@@ -147,6 +153,7 @@ export const finModelEntity = {
 		iikko: false,
 		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
+		visible: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
@@ -168,6 +175,7 @@ export const finModelEntity = {
 		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
 		lable: "%",
+		visible: false,
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
 			deviationmodelData: FomulsClassFinModel.deviationModel as any,
@@ -187,6 +195,7 @@ export const finModelEntity = {
 		iikko: false,
 		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
+		visible: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
@@ -207,6 +216,7 @@ export const finModelEntity = {
 		iikko: false,
 		mark: FomulsClassFinModel.trendFormul("down"),
 		colors: true,
+		visible: true,
 		lable: "%",
 		formul: {
 			factmodelData: FomulsClassFinModel.facktModel as any,
@@ -221,12 +231,29 @@ export const finModelEntity = {
 			deviation: 0
 		}
 	},
+	averageRevenue: {
+		name: inputFromNameFinModel.averageRevenue,
+		rashod: false,
+		iikko: true,
+		mark: FomulsClassFinModel.trendFormul("up"),
+		colors: true,
+		visible: true,
+		lable: "руб",
+		formul: null,
+		params: {
+			factrub: 0,
+			costs: 0,
+			fact: 0,
+			deviation: 0
+		}
+	},
 	averageCheck: {
 		name: inputFromNameFinModel.averageCheck,
 		rashod: false,
 		iikko: true,
 		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
+		visible: true,
 		lable: "руб",
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
@@ -247,6 +274,7 @@ export const finModelEntity = {
 		iikko: true,
 		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
+		visible: true,
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
 			deviationmodelData: null,
@@ -267,6 +295,7 @@ export const finModelEntity = {
 		iikko: true,
 		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
+		visible: true,
 		lable: "руб",
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
@@ -287,6 +316,7 @@ export const finModelEntity = {
 		iikko: true,
 		mark: FomulsClassFinModel.trendFormul("up"),
 		colors: true,
+		visible: true,
 		lable: "руб",
 		formul: {
 			factmodelData: FomulsClassFinModel.ikkoFactMode as any,
@@ -294,21 +324,6 @@ export const finModelEntity = {
 			averageCostbyFact: null,
 			averageFactbyCost: null
 		},
-		params: {
-			factrub: 0,
-			costs: 0,
-			fact: 0,
-			deviation: 0
-		}
-	},
-	averageRevenue: {
-		name: inputFromNameFinModel.averageRevenue,
-		rashod: false,
-		iikko: true,
-		mark: FomulsClassFinModel.trendFormul("up"),
-		colors: true,
-		lable: "руб",
-		formul: null,
 		params: {
 			factrub: 0,
 			costs: 0,

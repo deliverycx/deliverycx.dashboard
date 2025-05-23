@@ -1,9 +1,17 @@
 .charts {
 	display: flex;
 	align-items: center;
+	margin-top: 30px;
 
 	.chart_tabs_menu {
 		width: 30%;
+	}
+
+	.datepicker {
+		display: flex;
+		justify-content: space-between;
+		align-self: center;
+		margin-left: 25px;
 	}
 
 	.chart_tabs_item {

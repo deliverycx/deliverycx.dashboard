@@ -11,8 +11,8 @@ export class ChartsControllers {
 	) { }
 
 	@Get('chart')
-	async chart(@Query() query: { deportamentid: string },) {
-		return this.chartsQueries.queryChartsDeportametMouthList(query.deportamentid)
+	async chart(@Query() query: { deportamentid: string, year: string },) {
+		return this.chartsQueries.queryChartsDeportametMouthList(query.deportamentid, query.year)
 	}
 	@Post('chart')
 	async chartPost(@Body() body: { deportamets: string[] },) {

@@ -1,12 +1,12 @@
 import { axiosInstance } from "@shared/api/AxiosCreate"
 import { useEffect, useState } from "react"
 
-export const useChartsDeportamentsRequest = (deportamentid: string | string[]) => {
+export const useChartsDeportamentsRequest = (deportamentid: string | string[], year: any) => {
 	const [charsDeportamet, setChartsDeportament] = useState<{ averageCheck: any, averageDailyRevenue: any, dailyCheckCount: any, monthlyCheckCount: any } | null>(null)
 
-	const getChartsDeportamet = async () => {
+	const getChartsDeportamet = async (currentYear: string) => {
 		try {
-			const { data } = await axiosInstance.get(`charts/chart?deportamentid=${deportamentid}`)
+			const { data } = await axiosInstance.get(`charts/chart?deportamentid=${deportamentid}&year=${currentYear}`)
 			if (data) {
 				setChartsDeportament(data[0])
 			}
@@ -29,8 +29,8 @@ export const useChartsDeportamentsRequest = (deportamentid: string | string[]) =
 
 
 	useEffect(() => {
-		getChartsDeportamet()
-	}, [])
+		year && getChartsDeportamet(year.format('YYYY'))
+	}, [year])
 
 	return charsDeportamet
 }

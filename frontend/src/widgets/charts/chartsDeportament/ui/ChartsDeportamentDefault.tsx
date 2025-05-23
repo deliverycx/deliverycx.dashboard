@@ -1,9 +1,15 @@
 import { ChartsModel } from "entities/charts"
-import { FC } from "react"
+import { FC, useState } from "react"
 import { useChartsDeportamentsRequest } from "../hooks/chartsDeportamentsRequest"
 import "./ChartsDeportamentDefault.style.scss"
 import { Box, Tabs, Tab } from "@mui/material"
 import React from "react"
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { ruRU } from '@mui/x-date-pickers/locales';
+import ru from 'dayjs/locale/ru';
+import dayjs from 'dayjs';
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -36,7 +42,8 @@ function a11yProps(index: number) {
 
 export const ChartsDeportamentDefault: FC<{ deportamentid: string }> = ({ deportamentid }) => {
 	const [value, setValue] = React.useState(0);
-	const charsDeportamet = useChartsDeportamentsRequest(deportamentid)
+	const [selectedYear, setSelectedYear] = useState<any>(dayjs());
+	const charsDeportamet = useChartsDeportamentsRequest(deportamentid, selectedYear)
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
@@ -57,6 +64,21 @@ export const ChartsDeportamentDefault: FC<{ deportamentid: string }> = ({ deport
 						</Tabs>
 					</div>
 					<div className="chart_tabs_item">
+						<div className="datepicker">
+							<h3>Показатели IIKKO</h3>
+							<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ru as unknown}
+								localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
+								<DatePicker
+									views={['year']}
+
+									label="Выберите год"
+
+									defaultValue={dayjs()}
+									onChange={setSelectedYear}
+								/>
+							</LocalizationProvider>
+						</div>
+
 						<CustomTabPanel value={value} index={0}>
 							<ChartsModel chart={charsDeportamet.averageDailyRevenue} settings={{ color: "", lable: "Среднедневная выручка" }} />
 						</CustomTabPanel>

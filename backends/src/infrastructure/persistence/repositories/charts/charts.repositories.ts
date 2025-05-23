@@ -13,13 +13,14 @@ export class ChartsRepositories {
 
 
 
-	async chartsRageMounth(id: string) {
+	async chartsRageMounth(id: string, year: string) {
 		const result = await this.finModelModel.aggregate([
 			{
 				$match: {
 					departamentid: id
 				}
 			},
+
 			{
 				$project: {
 					paramsModel: 1
@@ -27,6 +28,13 @@ export class ChartsRepositories {
 			},
 			{
 				$unwind: "$paramsModel"
+			},
+			{
+				$match: {
+					$expr: {
+						$eq: [{ $substr: ["$paramsModel.mouth", 0, 4] }, year]
+					}
+				}
 			},
 			{
 				$sort: {

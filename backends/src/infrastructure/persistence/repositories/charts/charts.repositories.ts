@@ -147,12 +147,43 @@ export class ChartsRepositories {
 
 
 
-	async chartsMultiRageMounth(arrayOfIds: string[]) {
+	async chartsMultiRageMounth(arrayOfIds: string[], year: string) {
 		const matchStage = arrayOfIds.length > 0
 			? { departamentid: { $in: arrayOfIds } }
 			: {}; // пустой объект, если массив пустой
 
-		const result = await this.finModelModel.find(matchStage)
+		const pipeline = [
+			// 1. Если нужно — фильтруем по departamentid
+			...(Object.keys(matchStage).length > 0 ? [{ $match: matchStage }] : []),
+
+			// 2. Оставляем только нужные параметры по году
+			{
+				$project: {
+					departamentid: 1,
+					filteredParams: {
+						$filter: {
+							input: "$paramsModel",
+							as: "param",
+							cond: {
+								$regexMatch: {
+									input: "$$param.mouth",
+									regex: year
+								}
+							}
+						}
+					}
+				}
+			},
+
+			// 3. Убираем документы, где после фильтрации массив пустой
+			{
+				$match: {
+					"filteredParams.0": { $exists: true }
+				}
+			}
+		];
+
+		const result = await this.finModelModel.aggregate(pipeline)
 		return result
 	}
 

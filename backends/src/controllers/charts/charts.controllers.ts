@@ -15,8 +15,8 @@ export class ChartsControllers {
 		return this.chartsQueries.queryChartsDeportametMouthList(query.deportamentid, query.year)
 	}
 	@Post('chart')
-	async chartPost(@Body() body: { deportamets: string[] },) {
-		const result = await this.chartsQueries.queryChartsDeportametMouthList(body.deportamets)
+	async chartPost(@Body() body: { deportamets: string[], year: string },) {
+		const result = await this.chartsQueries.queryChartsDeportametMouthList(body.deportamets, body.year)
 		const chartsMult = new ChartsMultipliServies(result)
 		return chartsMult.chartMulptModel()
 	}

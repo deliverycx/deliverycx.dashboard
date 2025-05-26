@@ -13,7 +13,7 @@ export class ChartsQueries {
 			return this.chartsRepositories.chartsRageMounth(deportamentid, year)
 		}
 		if (Array.isArray(deportamentid)) {
-			return this.chartsRepositories.chartsMultiRageMounth(deportamentid)
+			return this.chartsRepositories.chartsMultiRageMounth(deportamentid, year)
 		}
 
 	}

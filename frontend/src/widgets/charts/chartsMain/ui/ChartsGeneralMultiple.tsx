@@ -6,6 +6,7 @@ import { ChartsModel } from "entities/charts"
 import { useChartsDeportamentsRequest } from "widgets/charts/chartsDeportament/hooks/chartsDeportamentsRequest"
 import { useChartsMultiDeportametnsRequest } from "../hooks/chartsMultiDeportametnsRequest"
 import { IgroopsDep } from "features/deportamensListChoise/types/groopsdeportemets.type"
+import dayjs from "dayjs"
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -39,7 +40,8 @@ function a11yProps(index: number) {
 export const ChartsGeneralMultiple = () => {
 	const [multiDeportamets, setMultiDeportaments] = useState<IgroopsDep[]>([])
 	const [value, setValue] = useState(0);
-	const charsDeportamet = useChartsMultiDeportametnsRequest(multiDeportamets)
+	const [selectedYear, setSelectedYear] = useState<any>(dayjs());
+	const charsDeportamet = useChartsMultiDeportametnsRequest(multiDeportamets, selectedYear)
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
@@ -47,7 +49,7 @@ export const ChartsGeneralMultiple = () => {
 
 	return (
 		<>
-			<DeportamentsListsMultiple setter={setMultiDeportaments} />
+			<DeportamentsListsMultiple setter={setMultiDeportaments} setSelectedYear={setSelectedYear} />
 			<div className="charts">
 				{
 					charsDeportamet &&

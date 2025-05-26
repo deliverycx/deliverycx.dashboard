@@ -9,6 +9,13 @@ import { MediumButton } from '@shared/ui/buttons';
 import { usePointsListRequest } from 'entities/pointListEntity';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import { Button } from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { ruRU } from '@mui/x-date-pickers/locales';
+import ru from 'dayjs/locale/ru';
+import dayjs from 'dayjs';
+
 
 const GroupHeader = styled('div')(({ theme }) => ({
 	position: 'sticky',
@@ -27,10 +34,11 @@ const GroupItems = styled('ul')({
 
 type IProps = {
 	setter: React.Dispatch<React.SetStateAction<any | null>>
+	setSelectedYear: any
 }
 
 
-export const DeportamentsListsMultiple: React.FC<IProps> = ({ setter }) => {
+export const DeportamentsListsMultiple: React.FC<IProps> = ({ setter, setSelectedYear }) => {
 	const { pointList, getPointsList, unloadRequest, statusUnload } = usePointsListRequest()
 	const optionsDeportamens = useGooprsDeportaments(pointList)
 
@@ -65,6 +73,20 @@ export const DeportamentsListsMultiple: React.FC<IProps> = ({ setter }) => {
 							/>
 							: "Требуется выгрузка депортаментов из айко"
 					}
+				</div>
+				<div className="datepicker">
+
+					<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ru as unknown}
+						localeText={ruRU.components.MuiLocalizationProvider.defaultProps.localeText}>
+						<DatePicker
+							views={['year']}
+
+							label="Выберите год"
+
+							defaultValue={dayjs()}
+							onChange={setSelectedYear}
+						/>
+					</LocalizationProvider>
 				</div>
 			</div>
 

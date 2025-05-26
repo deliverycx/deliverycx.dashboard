@@ -20,8 +20,9 @@ export class ChartsMultipliServies {
 	}
 
 	findAllMoung(key: string) {
+
 		const res = this.arrChartMult.map((val: any) => {
-			return val.paramsModel.map((param: any) => {
+			return val.filteredParams.map((param: any) => {
 				return {
 					m: param.mouth,
 					v: param.model[key].factrub
@@ -30,6 +31,7 @@ export class ChartsMultipliServies {
 			})
 
 		})
+
 		return this.mult(res)
 	}
 	mult(data: any) {
@@ -49,6 +51,7 @@ export class ChartsMultipliServies {
 			}
 			return acc;
 		}, {});
+
 
 		// Рассчитываем среднее значение для каждого месяца
 		const averages = Object.keys(result).map(m => ({

@@ -24,9 +24,9 @@ export const FinModelFormMouthTable: FC<IProps> = ({ deportament }) => {
 
 	const TextFieldKeys = () => {
 		return (Object.keys(finModelEntity) as Array<keyof typeof finModelEntity>).map((key) => {
-			//console.log(`${key}.factrub`);
+			const cat = key as keyof typeof finModelEntity;
 
-			return (
+			return finModelEntity[cat].visible !== false && (
 				<tr>
 					<td scope="row" className="deportament_info-celltitle">
 						<span>{inputFromNameFinModel[key]}</span>

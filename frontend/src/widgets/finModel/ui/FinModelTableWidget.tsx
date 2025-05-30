@@ -80,9 +80,8 @@ export const FinModelTableWidget: FC<{ deportament: IpointList }> = ({ deportame
 
 					<tr>
 						<td className="left-align">{inputFromNameFinModel[key]}</td>
-						<td className="group-fact rub"><FinModelPrevPeriod keyFin={key} metod="factrub">
+						<td className="group-fact rub">
 							{finmodel[key].factrub}
-						</FinModelPrevPeriod>
 						</td>
 						<td className="group-model open">
 							{
@@ -104,8 +103,8 @@ export const FinModelTableWidget: FC<{ deportament: IpointList }> = ({ deportame
 		setAnchorEl(e.currentTarget);
 		setPoper((prev) => placement !== id || !prev);
 		setPlacement(id);
-
 	}
+
 
 
 

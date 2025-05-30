@@ -50,7 +50,7 @@ export const DeportamentsLists: React.FC<IProps> = ({ setter }) => {
 							? <Autocomplete
 								options={optionsDeportamens}
 								groupBy={(option) => option && option.firstLetter}
-								getOptionLabel={(option) => option && option.title}
+								getOptionLabel={(option) => option && `${option.firstLetter}, ${option.title}`}
 								sx={{ width: 350 }}
 								renderInput={(params) => <TextField {...params} label="Выберите депортамент" />}
 								renderGroup={(params) => (
